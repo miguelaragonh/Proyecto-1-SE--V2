@@ -33,8 +33,8 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
-        $remember = ($request->has('remember')) ? true : false;
-        if (Auth::attempt($datos, $remember)) {
+       $remember = ($request->has('remember')) ? true : false;
+        if (Auth::attempt($datos,$remember)) {
             $request->session()->regenerate();
             return redirect()->intended(route('welcome'));
         } else {
