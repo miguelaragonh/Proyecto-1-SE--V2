@@ -22,11 +22,26 @@ class LoginController extends Controller
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->idEstado = 1;
+        $usuario->idRol = 2;
+        $usuario->save();
+        Auth::login($usuario);
+        return redirect()->route('welcome');
+    }
+
+    public function registerAdmin(Request $request)
+    {
+        $usuario = new User();
+        $usuario->name = $request->name;
+        $usuario->lastname = $request->lastname;
+        $usuario->email = $request->email;
+        $usuario->password = Hash::make($request->password);
+        $usuario->idEstado = 1;
         $usuario->idRol = 1;
         $usuario->save();
         Auth::login($usuario);
         return redirect()->route('welcome');
     }
+    
     public function login(Request $request)
     {
         $datos = [
