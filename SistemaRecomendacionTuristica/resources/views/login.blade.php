@@ -1,5 +1,11 @@
+<html>
+	<head>
+		<link rel="shortcut icon" href="images/srtcr.png" type="image/x-icon">
+		<title>Iniciar Sesion en SRTCR</title>
+		<link rel="stylesheet" href="{{ asset('assets/LogIn.css') }}">
+	</head>
+</html>
 <section>
-<link rel="stylesheet" href="{{ asset('assets/LogIn.css') }}">
 <div id="container" class="container">
         <div class="bg-container">
             <img src="images/Background4.jpg" class="bg-fondo">
