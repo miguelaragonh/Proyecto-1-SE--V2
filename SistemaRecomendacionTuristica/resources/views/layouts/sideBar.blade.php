@@ -122,9 +122,20 @@
                 class="btn-logout">
                 <i class="fa-solid fa-circle-xmark"></i> Cerrar Sesion</a>
         </nav>
+<<<<<<< HEAD
         <div class="content">
             @yield('content')
         </div>
+=======
+        <main class="content px-3 py-2">
+            <div class="container-fluid">
+                <div class="mb-3">
+                    @yield('content')
+                    <h3>Bienvenidos a SRT CR</h3>
+                </div>
+            </div>
+        </main>
+>>>>>>> 9bbd8ad17c3a7197d47fd5fd217bc9e8e5ff3eb2
     </div>
 </div>
 </body>
