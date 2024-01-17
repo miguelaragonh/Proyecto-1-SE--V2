@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+<link rel="stylesheet" href="{{asset('assets/sidebar.css')}}">
 
 <head>
     <meta charset="UTF-8">
@@ -9,8 +10,6 @@
 </head>
 
 <body>
-
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -118,9 +117,11 @@
             <button class="btn" type="button" >
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="cs-btn">
             <a href="{{ url('/logout') }}"
                 class="btn-logout">
                 <i class="fa-solid fa-circle-xmark"></i> Cerrar Sesion</a>
+            </div>
         </nav>
         <div class="content">
             @yield('content')
@@ -128,148 +129,6 @@
     </div>
 </div>
 </body>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-    :root {
-    --primary-color: #183d7c;
-    --secondary-color: #2c4778;
-    --black: #000000;
-    --white: #ffffff;
-    --gray: #efefef;
-    --gray-2: #757575;
-    }
-*,
-::after,
-::before {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-   background: rgb(0, 0, 0)
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: cover;
-}
-
-h3 {
-    font-size: 1.2375rem;
-    color: var(--black);
-}
-
-a {
-    cursor: pointer;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-}
-
-li {
-    list-style: none;
-}
-
-/* Layout skeleton */
-
-.wrapper {
-    align-items: stretch;
-    display: flex;
-    width: 100%;
-}
-
-#sidebar {
-    max-width: 264px;
-    min-width: 264px;
-    transition: all 0.35s ease-in-out;
-    box-shadow: 0 0 35px 0 rgba(10, 10, 10, 0.5);
-    border-right: 1px solid var(--primary-color);
-    z-index: 1111;
-}
-
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--primary-color);
-    box-shadow: 0 0 35px 0 rgba(10, 10, 10, 0.5);
-    font-size: 18px;
-}
-.navbar span{
-    color: var(--primary-color);
-}
-/* Sidebar collapse */
-
-#sidebar.collapsed {
-    margin-left: -264px;
-}
-
-.main {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    transition: all 0.35s ease-in-out;
-}
-
-.sidebar-logo {
-    padding: 1.15rem 1.5rem;
-}
-
-.sidebar-logo a {
-    color: var(--black);
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.sidebar-nav {
-    padding: 0;
-}
-
-.sidebar-header {
-    color: #000000;
-    font-size: .75rem;
-    padding: 1.5rem 1.5rem .375rem;
-}
-
-a.sidebar-link {
-    padding: .625rem 1.625rem;
-    color: var(--black);
-    position: relative;
-    display: block;
-    font-size: 1rem;
-}
-
-.sidebar-link[data-bs-toggle="collapse"]::after {
-    border: solid;
-    border-width: 0 .075rem .075rem 0;
-    content: "";
-    display: inline-block;
-    padding: 2px;
-    position: absolute;
-    right: 1.5rem;
-    top: 1.4rem;
-    transform: rotate(-135deg);
-    transition: all .2s ease-out;
-}
-
-.sidebar-link[data-bs-toggle="collapse"].collapsed::after {
-    transform: rotate(45deg);
-    transition: all .2s ease-out;
-}
-
-.content {
-    width: 100%;
-    height: 100%;
-}
-
-/* Responsive */
-
-@media (min-width:768px) {
-    .content {
-        width: 100%;
-    }
-}
-</style>
-
 
 <script>
     const toggler = document.querySelector(".btn");
