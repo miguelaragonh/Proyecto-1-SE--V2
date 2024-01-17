@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +19,6 @@
 <div class="wrapper">
     <!-- Sidebar -->
     <aside id="sidebar">
-        @yield('content')
         <div class="h-100">
             <div class="sidebar-logo">
                 <a href="{{ url('/home') }}">SRTCR</a>
@@ -115,26 +112,32 @@
         </div>
     </aside>
     <!-- Main Component -->
-    <div class="main">
-        <nav class="navbar navbar-expand px-3 border-bottom">
+    <div class="main m-0">
+        <nav class="navbar navbar-expand px-3">
             <!-- Button for sidebar toggle -->
             <button class="btn" type="button" >
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <a href="{{ url('/logout') }}"
+                class="btn-logout">
+                <i class="fa-solid fa-circle-xmark"></i> Cerrar Sesion</a>
         </nav>
-        <main class="content px-3 py-2">
-            <div class="container-fluid">
-                <div class="mb-3">
-                    <h3>Bienvenidos a SRT CR</h3>
-                </div>
-            </div>
-        </main>
+        <div class="content">
+            @yield('content')
+        </div>
     </div>
 </div>
 </body>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
+    :root {
+    --primary-color: #183d7c;
+    --secondary-color: #2c4778;
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #efefef;
+    --gray-2: #757575;
+    }
 *,
 ::after,
 ::before {
@@ -152,7 +155,7 @@ body {
 
 h3 {
     font-size: 1.2375rem;
-    color: #000000;
+    color: var(--black);
 }
 
 a {
@@ -178,9 +181,20 @@ li {
     min-width: 264px;
     transition: all 0.35s ease-in-out;
     box-shadow: 0 0 35px 0 rgba(10, 10, 10, 0.5);
+    border-right: 1px solid var(--primary-color);
     z-index: 1111;
 }
 
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--primary-color);
+    box-shadow: 0 0 35px 0 rgba(10, 10, 10, 0.5);
+    font-size: 18px;
+}
+.navbar span{
+    color: var(--primary-color);
+}
 /* Sidebar collapse */
 
 #sidebar.collapsed {
@@ -201,7 +215,7 @@ li {
 }
 
 .sidebar-logo a {
-    color: #000000;
+    color: var(--black);
     font-size: 1.25rem;
     font-weight: 600;
 }
@@ -218,7 +232,7 @@ li {
 
 a.sidebar-link {
     padding: .625rem 1.625rem;
-    color: #000000;
+    color: var(--black);
     position: relative;
     display: block;
     font-size: 1rem;
@@ -243,19 +257,19 @@ a.sidebar-link {
 }
 
 .content {
-    flex: 1;
-    max-width: 100vw;
-    width: 100vw;
+    width: 100%;
+    height: 100%;
 }
 
 /* Responsive */
 
 @media (min-width:768px) {
     .content {
-        width: auto;
+        width: 100%;
     }
 }
 </style>
+
 
 <script>
     const toggler = document.querySelector(".btn");
@@ -263,8 +277,6 @@ toggler.addEventListener("click",function(){
     document.querySelector("#sidebar").classList.toggle("collapsed");
 });
 </script>
-
+<script src="https://kit.fontawesome.com/ebacb183db.js" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
