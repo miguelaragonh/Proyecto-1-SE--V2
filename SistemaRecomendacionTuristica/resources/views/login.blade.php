@@ -1,5 +1,7 @@
 <section>
-<link rel="stylesheet" href="{{ asset('assets/LogIn.css') }}">
+    <head><link rel="shortcut icon" href="images/srtcr.png" type="image/x-icon">
+    <title>Inicio</title>
+<link rel="stylesheet" href="{{ asset('assets/LogIn.css') }}"></head>
 <div id="container" class="container">
         <div class="bg-container">
             <img src="images/Background4.jpg" class="bg-fondo">
@@ -93,18 +95,16 @@
 					</h2>
 				</div>
 				<div class="img sign-in">
-		
 				</div>
 			</div>
 			<div class="col align-items-center flex-col">
 				<div class="img sign-up">
-				
 				</div>
 				<div class="text sign-up">
 					<h2>
 						Registrarse
 					</h2>
-	
+
 				</div>
 			</div>
 		</div>
