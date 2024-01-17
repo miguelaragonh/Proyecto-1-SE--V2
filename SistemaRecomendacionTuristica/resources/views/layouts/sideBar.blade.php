@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/srtcr.png" type="image/x-icon">
     <title> @yield('title')</title>
 </head>
 
@@ -20,94 +21,58 @@
     <aside id="sidebar">
         <div class="h-100">
             <div class="sidebar-logo">
-                <a href="{{ url('/home') }}">SRTCR</a>
+                <a href="{{ url('/home') }}">
+                    <img src="images/srtcr.png" alt="">
+                    SRTCR
+                </a>
             </div>
             <!-- Sidebar Navigation -->
             <ul class="sidebar-nav">
-                <li class="sidebar-header">
-                    Tools & Components
+                <li class="sidebar-header user">
+                <i class="fa-solid fa-user"></i>  
+                    <a>Bienvenido {{ auth()->user()->name }}</a>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                        <i class="fa-solid fa-list pe-2"></i>
-                        Profile
+                    <i class="fa-solid fa-address-card"></i>
+                          Perfil
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages"
                         aria-expanded="false" aria-controls="pages">
-                        <i class="fa-regular fa-file-lines pe-2"></i>
-                        Pages
+                        <i class="fa-solid fa-earth-americas"></i>
+                          Explorar
                     </a>
                     <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Analytics</a>
+                            <a href="#" class="sidebar-link"><i class="fa-solid fa-umbrella-beach"></i>  Playas</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Ecommerce</a>
+                            
+                            <a href="#" class="sidebar-link"><i class="fa-solid fa-mountain"></i>   Montañas</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Crypto</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
-                        <i class="fa-solid fa-sliders pe-2"></i>
-                        Dashboard
-                    </a>
-                    <ul id="dashboard" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Dashboard Analytics</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Dashboard Ecommerce</a>
+                            <a href="#" class="sidebar-link"><i class="fa-solid fa-city"></i>  Ciudades</a>
                         </li>
                     </ul>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#auth"
                         aria-expanded="false" aria-controls="auth">
-                        <i class="fa-regular fa-user pe-2"></i>
-                        Auth
+                        <i class="fa-solid fa-user-tie"></i>
+                            Administracion
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Login</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Register</a>
+                            <a href="#" class="sidebar-link">Administar Lugares</a>
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-header">
-                    Multi Level Nav
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi"
-                        aria-expanded="false" aria-controls="multi">
-                        <i class="fa-solid fa-share-nodes pe-2"></i>
-                        Multi Level
-                    </a>
-                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
-                                Two Links
-                            </a>
-                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Link 1</a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Link 2</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            <button class="Btn">
+                <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+                <a class="text" href="{{ url('/logout') }}">Logout</a>
+        </button>
         </div>
     </aside>
     <!-- Main Component -->
@@ -117,11 +82,10 @@
             <button class="btn" type="button" >
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="cs-btn">
-            <a href="{{ url('/logout') }}"
-                class="btn-logout">
-                <i class="fa-solid fa-circle-xmark"></i> Cerrar Sesion</a>
-            </div>
+        <div class="search">
+            <input placeholder="Search..." type="text">
+            <button type="submit">Go</button>
+        </div>
         </nav>
         <div class="content">
             @yield('content')
