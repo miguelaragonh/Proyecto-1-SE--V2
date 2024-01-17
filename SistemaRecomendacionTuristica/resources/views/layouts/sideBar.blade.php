@@ -21,7 +21,7 @@
 <div class="wrapper">
     <!-- Sidebar -->
     <aside id="sidebar">
-        @yield('content')
+
         <div class="h-100">
             <div class="sidebar-logo">
                 <a href="{{ url('/home') }}">SRTCR</a>
@@ -125,6 +125,7 @@
         <main class="content px-3 py-2">
             <div class="container-fluid">
                 <div class="mb-3">
+                    @yield('content')
                     <h3>Bienvenidos a SRT CR</h3>
                 </div>
             </div>
