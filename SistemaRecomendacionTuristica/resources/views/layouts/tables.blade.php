@@ -19,7 +19,8 @@
             <h5>Gestionar de estados</h5>
             <div class="card-head text-center">
                 <br>
-                <button class="btn btn-primary" id="btnNuevo" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-regular fa-square-plus"></i> Nuevo</button>
+                @yield('btnNuevo')
+
             </div>
             <div class="card-body">
 

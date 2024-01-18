@@ -23,7 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/home', function () {return view('welcome');})->name('welcome');
 
-    //VIEWS
+    //Estados
     Route::get('/estados',[EstadosController::class,'index'])->name('estados');
-
+    Route::post('/estados/crear',[EstadosController::class,'store'])->name('crearEstado');
+    Route::post('/estados/editar/{id}',[EstadosController::class,'update'])->name('editarEstado');
+    Route::delete('/estados/eliminar/{estado}',[EstadosController::class,'destroy'])->name('eliminarEstado');
 });

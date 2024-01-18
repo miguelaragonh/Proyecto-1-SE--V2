@@ -12,16 +12,8 @@ class EstadosController extends Controller
      */
     public function index()
     {
-        $estados=Estado::all();
+        $estados = Estado::all();
         return view('admin.estados', compact('estados'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -29,38 +21,35 @@ class EstadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $estado = new Estado();
+        $estado->nombre = $request->nombre;
+        $estado->descripcion = $request->descripcion;
+        $estado->save();
+        return redirect()->route('estados');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $estado = Estado::find($id);
+        $estado->nombre = $request->nombre;
+        $estado->descripcion = $request->descripcion;
+        $estado->save();
+        return redirect()->route('estados');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Estado $estado)
     {
-        //
+        $estado->delete();
+        return redirect()->route('estados');
     }
 }
