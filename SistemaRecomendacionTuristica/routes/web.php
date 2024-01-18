@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,8 @@ Route::post('/iniciar', [LoginController::class, 'login'])->name('iniciarSesion'
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/home', function () {return view('welcome');})->name('welcome');
+
+    //VIEWS
+    Route::get('/estados',[EstadosController::class,'index'])->name('estados');
+
 });

@@ -22,7 +22,7 @@ class LoginController extends Controller
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->idEstado = 1;
-        $usuario->idRol = 2;
+        $usuario->idRol = ($request->idRol)?$request->idRol:2;
         $usuario->save();
         Auth::login($usuario);
         return redirect()->route('welcome');
@@ -41,7 +41,7 @@ class LoginController extends Controller
         Auth::login($usuario);
         return redirect()->route('welcome');
     }
-    
+
     public function login(Request $request)
     {
         $datos = [
