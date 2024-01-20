@@ -13,9 +13,9 @@ body {
     background-color: var(--background);
     justify-content: center;
     align-items: center;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     height: 100vh;
-    padding: 1rem;
+    padding: 0;
 }
 
 * {
@@ -58,6 +58,10 @@ body {
 
 .card:hover .card__preview img {
     transform: scale(1.35);
+}
+
+.card:hover{
+    box-shadow: 2px 2px 10px var(--primary);
 }
 
 .card__address {
@@ -133,4 +137,11 @@ body {
 .card__btn--like svg {
     stroke: var(--like);
     fill: var(--like);
+}
+
+h1{
+    margin-left: 4%;
+    margin-top:2%;
+    margin-bottom: 1%;
+    color: var(--text);
 }

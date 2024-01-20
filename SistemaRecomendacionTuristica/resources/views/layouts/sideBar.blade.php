@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <link rel="stylesheet" href="{{ asset('assets/sidebar.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/home.css') }}">
 
 <head>
     <meta charset="UTF-8">
@@ -15,14 +14,14 @@
     <div class="wrapper">
     <header class="menu__wrapper">
         <div class="menu__bar">
-            <a href="#" title="Home" aria-label="home" class="logo">
+            <a href="{{route('welcome')}}" title="Home" aria-label="home" class="logo">
                 <img src="images/srtcr.png" alt="">
             </a>
             <nav>
                 <ul class="navigation hide">
                     <li>
                         <button>
-                            Features
+                            Administracion
                             <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16">
                                 <path
                                     d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z">
@@ -39,10 +38,12 @@
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
                                         </svg>
-                                        <div class="item-title">
-                                            <h3>Previews</h3>
-                                            <p>Zero config, more innovation</p>
-                                        </div>
+                                        <a href="{{ route('estados') }}">
+                                            <div class="item-title">
+                                             <h3>Administar Estados</h3>
+                                             <p>Gestiona los Estados</p>
+                                            </div>
+                                        </a>
                                     </li>
                                     <li>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -54,8 +55,8 @@
                                             <path d="M4 16l8 4l8 -4" />
                                         </svg>
                                         <div class="item-title">
-                                            <h3>Infrastructure</h3>
-                                            <p>Always fast always online</p>
+                                            <h3>Administrar Lugares</h3>
+                                            <p>Gestiona los Lugares Disponibles</p>
                                         </div>
                                     </li>
                                     <li>
@@ -68,8 +69,8 @@
                                             <path d="M15 12v-3" />
                                         </svg>
                                         <div class="item-title">
-                                            <h3>Next js</h3>
-                                            <p>The native Next.js platform</p>
+                                            <h3>Administar Usuarios</h3>
+                                            <p>Gestiona los Usuarios Registrados</p>
                                         </div>
                                     </li>
                                     <li>
@@ -84,8 +85,8 @@
                                             <path d="M12.5 3a17 17 0 0 1 0 18" />
                                         </svg>
                                         <div class="item-title">
-                                            <h3>Edge Functions</h3>
-                                            <p>Dynamic pages, static speed</p>
+                                            <h3>Administrar Roles</h3>
+                                            <p>Gestiona los Roles</p>
                                         </div>
                                     </li>
                                     <li>
@@ -96,8 +97,8 @@
                                             <path d="M3 12h4l3 8l4 -16l3 8h4" />
                                         </svg>
                                         <div class="item-title">
-                                            <h3>Analytics</h3>
-                                            <p>Real-time insights, peak performance</p>
+                                            <h3>Administrar Categorias</h3>
+                                            <p>Gestiona las Categorias Disponibles</p>
                                         </div>
                                     </li>
                                     <li>
@@ -105,14 +106,14 @@
                                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                             stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" />
-                                            <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
-                                            <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+                                            <path d="M3 12h4l3 8l4 -16l3 8h4" />
                                         </svg>
+                                        <a href="{{route('welcome')}}">
                                         <div class="item-title">
-                                            <h3>Storage</h3>
-                                            <p>Serverless storage for frontend</p>
+                                            <h3>Home</h3>
+                                            <p></p>
                                         </div>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -241,17 +242,15 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-brand-nextjs" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
+                                    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"
+                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993" />
-                                            <path d="M15 12v-3" />
+                                            <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
                                         </svg>
                                         <div class="item-title">
-                                            <h3>Next js</h3>
-                                            <p>The native Next.js platform</p>
+                                            <h3>Previews</h3>
+                                            <p>Zero config, more innovation</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -261,7 +260,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="action-buttons hide">
+        <div class="action-buttons">
         <button class="Btn" onclick="showConfirmation()">
                         <div class="sign"><svg viewBox="0 0 512 512">
                                 <path
@@ -269,7 +268,7 @@
                                 </path>
                             </svg></div>
                         <a class="text">Salir</a>
-                    </button>
+        </button>
         </div>
     </header>
     <div class="main">
@@ -279,8 +278,10 @@
     </div>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://kit.fontawesome.com/ebacb183db.js" crossorigin="anonymous"></script>
 <script>
-        function showConfirmation() {
+    function showConfirmation() {
         Swal.fire({
             title: '¿Estás seguro?',
             text: '¡Se cerrará la sesión!',
