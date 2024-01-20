@@ -11,6 +11,14 @@
 </head>
 
 <body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        < script src = "https://cdn.jsdelivr.net/npm/sweetalert2@10" >
+    </script>
+    </script>
+
     <div class="wrapper">
     <header class="menu__wrapper">
         <div class="menu__bar">
@@ -280,6 +288,8 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://kit.fontawesome.com/ebacb183db.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
 <script>
     function showConfirmation() {
         Swal.fire({
@@ -307,5 +317,23 @@
             }
         });
     }
+
+    function addDarkmodeWidget() {
+        const options = {
+            bottom: '64px', // default: '32px'
+            //right: 'unset', // default: '32px'
+            //left: '32px', // default: 'unset'
+            time: '0.5s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: '#fff', // default: '#fff'
+            buttonColorDark: '#100f2c', // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: false, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+        new Darkmode(options).showWidget();
+    }
+    window.addEventListener('load', addDarkmodeWidget);
 </script>
 </html>

@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
 @extends('layouts.tables')
 @section('btnNuevo')
     <button class="btn btn-primary" id="btnNuevo" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id=""
@@ -40,6 +38,8 @@
                 </td>
             </tr>
         @endforeach
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
             $(document).ready(function() {
                 // Capturar el clic en el botón "Editar"
@@ -239,4 +239,3 @@
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
     </form>
 @endsection
-</html>
