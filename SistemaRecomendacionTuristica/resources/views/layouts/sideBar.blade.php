@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <link rel="stylesheet" href="{{ asset('assets/sidebar.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/home.css') }}">
 
 <head>
     <meta charset="UTF-8">
@@ -11,79 +12,257 @@
 </head>
 
 <body>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        < script src = "https://cdn.jsdelivr.net/npm/sweetalert2@10" >
-    </script>
-    </script>
-
     <div class="wrapper">
-        <!-- Sidebar -->
-        <aside id="sidebar">
-            <div class="h-100">
-                <div class="sidebar-logo">
-                    <a href="{{ url('/home') }}">
-                        <img src="images/srtcr.png" alt="">
-                        SRTCR
-                    </a>
-                </div>
-                <!-- Sidebar Navigation -->
-                <ul class="sidebar-nav">
-                    <li class="sidebar-header user">
-                        <i class="fa-solid fa-user"></i>
-                        <a>Bienvenido {{ auth()->user()->name }}</a>
+    <header class="menu__wrapper">
+        <div class="menu__bar">
+            <a href="#" title="Home" aria-label="home" class="logo">
+                <img src="images/srtcr.png" alt="">
+            </a>
+            <nav>
+                <ul class="navigation hide">
+                    <li>
+                        <button>
+                            Features
+                            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16">
+                                <path
+                                    d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="dropdown__wrapper">
+                            <div class="dropdown">
+                                <ul class="list-items-with-description">
+                                    <li>
+                                        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"
+                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Previews</h3>
+                                            <p>Zero config, more innovation</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M12 4l-8 4l8 4l8 -4l-8 -4" />
+                                            <path d="M4 12l8 4l8 -4" />
+                                            <path d="M4 16l8 4l8 -4" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Infrastructure</h3>
+                                            <p>Always fast always online</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-brand-nextjs" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993" />
+                                            <path d="M15 12v-3" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Next js</h3>
+                                            <p>The native Next.js platform</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                                            <path d="M3.6 9h16.8" />
+                                            <path d="M3.6 15h16.8" />
+                                            <path d="M11.5 3a17 17 0 0 0 0 18" />
+                                            <path d="M12.5 3a17 17 0 0 1 0 18" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Edge Functions</h3>
+                                            <p>Dynamic pages, static speed</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M3 12h4l3 8l4 -16l3 8h4" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Analytics</h3>
+                                            <p>Real-time insights, peak performance</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" />
+                                            <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
+                                            <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Storage</h3>
+                                            <p>Serverless storage for frontend</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="fa-solid fa-address-card"></i>
-                            Perfil
-                        </a>
+                    <li>
+                        <button>
+                            Features
+                            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16">
+                                <path
+                                    d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="dropdown__wrapper">
+                            <div class="dropdown">
+                                <ul class="list-items-with-description">
+                                    <li>
+                                        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"
+                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Previews</h3>
+                                            <p>Zero config, more innovation</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M12 4l-8 4l8 4l8 -4l-8 -4" />
+                                            <path d="M4 12l8 4l8 -4" />
+                                            <path d="M4 16l8 4l8 -4" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Infrastructure</h3>
+                                            <p>Always fast always online</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-brand-nextjs" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993" />
+                                            <path d="M15 12v-3" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Next js</h3>
+                                            <p>The native Next.js platform</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                                            <path d="M3.6 9h16.8" />
+                                            <path d="M3.6 15h16.8" />
+                                            <path d="M11.5 3a17 17 0 0 0 0 18" />
+                                            <path d="M12.5 3a17 17 0 0 1 0 18" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Edge Functions</h3>
+                                            <p>Dynamic pages, static speed</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M3 12h4l3 8l4 -16l3 8h4" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Analytics</h3>
+                                            <p>Real-time insights, peak performance</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" />
+                                            <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
+                                            <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Storage</h3>
+                                            <p>Serverless storage for frontend</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#pages" aria-expanded="false" aria-controls="pages">
-                            <i class="fa-solid fa-earth-americas"></i>
-                            Explorar
-                        </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link"><i class="fa-solid fa-umbrella-beach"></i>
-                                    Playas</a>
-                            </li>
-                            <li class="sidebar-item">
-
-                                <a href="#" class="sidebar-link"><i class="fa-solid fa-mountain"></i> Montañas</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link"><i class="fa-solid fa-city"></i> Ciudades</a>
-                            </li>
-                        </ul>
+                    <li>
+                        <button>
+                            Features
+                            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16">
+                                <path
+                                    d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div class="dropdown__wrapper">
+                            <div class="dropdown">
+                                <ul class="list-items-with-description">
+                                    <li>
+                                        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"
+                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Previews</h3>
+                                            <p>Zero config, more innovation</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-brand-nextjs" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993" />
+                                            <path d="M15 12v-3" />
+                                        </svg>
+                                        <div class="item-title">
+                                            <h3>Next js</h3>
+                                            <p>The native Next.js platform</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </li>
-
-                    @if (auth()->user()->idRol == 1)
-                        <li class="sidebar-item">
-                            <a href="{{ route('iniciarSesion') }}" class="sidebar-link collapsed"
-                                data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false"
-                                aria-controls="auth">
-                                <i class="fa-solid fa-user-tie"></i>
-                                Administracion
-                            </a>
-                            <ul id="auth" class="sidebar-dropdown list-unstyled collapse"
-                                data-bs-parent="#sidebar">
-                                <li class="sidebar-item">
-                                    <a href="{{ route('estados') }}" class="sidebar-link">Administrar Estados</a>
-                                    <a href="{{ route('estados') }}" class="sidebar-link">Administrar Roles</a>
-                                    <a href="{{ route('estados') }}" class="sidebar-link">Administrar Usuarios</a>
-                                    <a href="{{ route('estados') }}" class="sidebar-link">Administrar Categoria</a>
-                                    <a href="{{ route('estados') }}" class="sidebar-link">Administrar Lugares</a>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
-
-                    <button class="Btn" onclick="showConfirmation()">
+                </ul>
+            </nav>
+        </div>
+        <div class="action-buttons hide">
+        <button class="Btn" onclick="showConfirmation()">
                         <div class="sign"><svg viewBox="0 0 512 512">
                                 <path
                                     d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
@@ -91,53 +270,17 @@
                             </svg></div>
                         <a class="text">Salir</a>
                     </button>
-            </div>
-        </aside>
-        <!-- Main Component -->
-        <div class="main m-0">
-            <nav class="navbar navbar-expand px-3">
-                <!-- Button for sidebar toggle -->
-                <button class="btn" type="button">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="search">
-                    <input placeholder="Search..." type="text">
-                    <button type="submit">Go</button>
-                </div>
-            </nav>
-            <div class="content">
-                @yield('content')
-            </div>
+        </div>
+    </header>
+    <div class="main">
+        <div class="content">
+            @yield('content')
         </div>
     </div>
+    </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-
 <script>
-    const toggler = document.querySelector(".btn");
-    toggler.addEventListener("click", function() {
-        document.querySelector("#sidebar").classList.toggle("collapsed");
-    });
-
-    function addDarkmodeWidget() {
-        const options = {
-            bottom: '64px', // default: '32px'
-            //right: 'unset', // default: '32px'
-            //left: '32px', // default: 'unset'
-            time: '0.5s', // default: '0.3s'
-            mixColor: '#fff', // default: '#fff'
-            backgroundColor: '#fff', // default: '#fff'
-            buttonColorDark: '#100f2c', // default: '#100f2c'
-            buttonColorLight: '#fff', // default: '#fff'
-            saveInCookies: false, // default: true,
-            label: '🌓', // default: ''
-            autoMatchOsTheme: true // default: true
-        }
-        new Darkmode(options).showWidget();
-    }
-    window.addEventListener('load', addDarkmodeWidget);
-
-    function showConfirmation() {
+        function showConfirmation() {
         Swal.fire({
             title: '¿Estás seguro?',
             text: '¡Se cerrará la sesión!',
@@ -164,8 +307,4 @@
         });
     }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://kit.fontawesome.com/ebacb183db.js" crossorigin="anonymous"></script>
-</body>
-
 </html>
