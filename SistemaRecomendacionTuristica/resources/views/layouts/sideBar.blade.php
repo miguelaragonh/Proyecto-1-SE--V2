@@ -29,7 +29,7 @@
                 <ul class="navigation hide">
                     <li>
                         <button>
-                            Administracion
+                            <i class="fa-solid fa-sliders"></i>Administracion
                             <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16">
                                 <path
                                     d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z">
@@ -40,12 +40,7 @@
                             <div class="dropdown">
                                 <ul class="list-items-with-description">
                                     <li>
-                                        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
-                                        </svg>
+                                        <i class="fa-solid fa-gear"></i>
                                         <a href="{{ route('estados') }}">
                                             <div class="item-title">
                                              <h3>Administar Estados</h3>
@@ -54,72 +49,39 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M12 4l-8 4l8 4l8 -4l-8 -4" />
-                                            <path d="M4 12l8 4l8 -4" />
-                                            <path d="M4 16l8 4l8 -4" />
-                                        </svg>
+                                        <i class="fa-solid fa-location-dot"></i>
                                         <div class="item-title">
                                             <h3>Administrar Lugares</h3>
                                             <p>Gestiona los Lugares Disponibles</p>
                                         </div>
                                     </li>
                                     <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-brand-nextjs" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993" />
-                                            <path d="M15 12v-3" />
-                                        </svg>
+                                        <i class="fa-solid fa-users"></i>
                                         <div class="item-title">
                                             <h3>Administar Usuarios</h3>
                                             <p>Gestiona los Usuarios Registrados</p>
                                         </div>
                                     </li>
                                     <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-                                            <path d="M3.6 9h16.8" />
-                                            <path d="M3.6 15h16.8" />
-                                            <path d="M11.5 3a17 17 0 0 0 0 18" />
-                                            <path d="M12.5 3a17 17 0 0 1 0 18" />
-                                        </svg>
+                                        <i class="fa-solid fa-user-tag"></i>
                                         <div class="item-title">
                                             <h3>Administrar Roles</h3>
                                             <p>Gestiona los Roles</p>
                                         </div>
                                     </li>
                                     <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M3 12h4l3 8l4 -16l3 8h4" />
-                                        </svg>
+                                        <i class="fa-solid fa-list"></i>
                                         <div class="item-title">
                                             <h3>Administrar Categorias</h3>
                                             <p>Gestiona las Categorias Disponibles</p>
                                         </div>
                                     </li>
                                     <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M3 12h4l3 8l4 -16l3 8h4" />
-                                        </svg>
+                                        <i class="fa-solid fa-house"></i>
                                         <a href="{{route('welcome')}}">
                                         <div class="item-title">
                                             <h3>Home</h3>
-                                            <p></p>
+                                            <p>Regresa a la Pagina Principal</p>
                                         </div>
                                         </a>
                                     </li>
@@ -129,7 +91,7 @@
                     </li>
                     <li>
                         <button>
-                            Features
+                            <i class="fa-solid fa-user"></i>Hola, {{ auth()->user()->name }}
                             <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16">
                                 <path
                                     d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z">
@@ -140,125 +102,29 @@
                             <div class="dropdown">
                                 <ul class="list-items-with-description">
                                     <li>
-                                        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
-                                        </svg>
+                                        <i class="fa-solid fa-user-tie"></i>
                                         <div class="item-title">
-                                            <h3>Previews</h3>
-                                            <p>Zero config, more innovation</p>
+                                            <h3>Rol</h3>
+                                            @if (auth()->user()->idRol == 1)
+                                            <p class="admin-info">Administrador</p>
+                                            @endif
+                                            @if (auth()->user()->idRol == 2)
+                                            <p class="client-info">Cliente</p>
+                                            @endif
                                         </div>
                                     </li>
                                     <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M12 4l-8 4l8 4l8 -4l-8 -4" />
-                                            <path d="M4 12l8 4l8 -4" />
-                                            <path d="M4 16l8 4l8 -4" />
-                                        </svg>
+                                        <i class="fa-solid fa-address-card"></i>
                                         <div class="item-title">
-                                            <h3>Infrastructure</h3>
-                                            <p>Always fast always online</p>
+                                            <h3>Perfil</h3>
+                                            <p>Administra tu informacion</p>
                                         </div>
                                     </li>
                                     <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-brand-nextjs" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993" />
-                                            <path d="M15 12v-3" />
-                                        </svg>
+                                        <i class="fa-solid fa-star"></i>
                                         <div class="item-title">
-                                            <h3>Next js</h3>
-                                            <p>The native Next.js platform</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-                                            <path d="M3.6 9h16.8" />
-                                            <path d="M3.6 15h16.8" />
-                                            <path d="M11.5 3a17 17 0 0 0 0 18" />
-                                            <path d="M12.5 3a17 17 0 0 1 0 18" />
-                                        </svg>
-                                        <div class="item-title">
-                                            <h3>Edge Functions</h3>
-                                            <p>Dynamic pages, static speed</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M3 12h4l3 8l4 -16l3 8h4" />
-                                        </svg>
-                                        <div class="item-title">
-                                            <h3>Analytics</h3>
-                                            <p>Real-time insights, peak performance</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" />
-                                            <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
-                                            <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
-                                        </svg>
-                                        <div class="item-title">
-                                            <h3>Storage</h3>
-                                            <p>Serverless storage for frontend</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <button>
-                            Features
-                            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16">
-                                <path
-                                    d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z">
-                                </path>
-                            </svg>
-                        </button>
-                        <div class="dropdown__wrapper">
-                            <div class="dropdown">
-                                <ul class="list-items-with-description">
-                                    <li>
-                                        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
-                                        </svg>
-                                        <div class="item-title">
-                                            <h3>Previews</h3>
-                                            <p>Zero config, more innovation</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
-                                        </svg>
-                                        <div class="item-title">
-                                            <h3>Previews</h3>
-                                            <p>Zero config, more innovation</p>
+                                            <h3>Mis Favoritos</h3>
+                                            <p>Mira los Lugares que te gustaron</p>
                                         </div>
                                     </li>
                                 </ul>
