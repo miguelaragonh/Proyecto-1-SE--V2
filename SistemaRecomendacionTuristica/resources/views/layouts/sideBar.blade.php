@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <link rel="stylesheet" href="{{ asset('assets/sidebar.css') }}">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,17 +114,30 @@
                                     </li>
                                     <li>
                                         <i class="fa-solid fa-address-card"></i>
+                                        <a href="{{route('profile')}}">
                                         <div class="item-title">
                                             <h3>Perfil</h3>
                                             <p>Administra tu informacion</p>
                                         </div>
+                                        </a>
                                     </li>
                                     <li>
                                         <i class="fa-solid fa-star"></i>
+                                        <a href="{{route('favorites')}}">
                                         <div class="item-title">
                                             <h3>Mis Favoritos</h3>
                                             <p>Mira los Lugares que te gustaron</p>
                                         </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-house"></i>
+                                        <a href="{{route('welcome')}}">
+                                        <div class="item-title">
+                                            <h3>Home</h3>
+                                            <p>Regresa a la Pagina Principal</p>
+                                        </div>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

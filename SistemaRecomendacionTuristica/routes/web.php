@@ -24,6 +24,8 @@ Route::post('/iniciar', [LoginController::class, 'login'])->name('iniciarSesion'
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/home', function () {return view('welcome');})->name('welcome');
+    Route::get('/profile', function () {return view('profile');})->name('profile');
+    Route::get('/favorites', function () {return view('favorites');})->name('favorites');
     Route::get('/error', function () {return view('error');})->name('error');
 
     //Estados
