@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RolesController;
@@ -43,4 +44,10 @@ Route::middleware(['auth', 'role'])->group(function () {
     Route::post('/rol/crear',[RolesController::class,'store'])->name('crearRol');
     Route::post('/rol/editar/{id}',[RolesController::class,'update'])->name('editarRol');
     Route::delete('/rol/eliminar/{rol}',[RolesController::class,'destroy'])->name('eliminarRol');
+
+    //Categorias
+    Route::get('/categoria',[CategoriasController::class,'index'])->name('categoria');
+    Route::post('/categoria/crear',[CategoriasController::class,'store'])->name('crearCategoria');
+    Route::post('/categoria/editar/{id}',[CategoriasController::class,'update'])->name('editarCategoria');
+    Route::delete('/categoria/eliminar/{categoria}',[CategoriasController::class,'destroy'])->name('eliminarCategoria');
 });

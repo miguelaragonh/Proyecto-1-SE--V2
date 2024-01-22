@@ -1,33 +1,40 @@
 @extends('layouts.tables')
+@section('titulo', 'Gestionar Categorias')
+
 @section('btnNuevo')
     <button class="btn btn-primary" id="btnNuevo" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id=""
         data-nombre="" data-descripcion=""><i class="fa-regular fa-square-plus"></i> Nuevo</button>
 @endsection
 
-@if ($estados->isEmpty())
-    <h3>No existen estados agregados</h3>
+@if ($categorias->isEmpty())
+    @section('nodata')
+        <h3 id='nodatos'>No existen categorias agregados</h3>
+    @endsection
 @else
     @section('thead')
         <tr>
             <th>Id</th>
             <th>Nombre</th>
             <th>Descripcion</th>
+            <th>Estado</th>
             <th>Accion</th>
         </tr>
     @endsection
     @section('tbody')
-        @foreach ($estados as $estado)
+        @foreach ($categorias as $categoria)
             <tr>
-                <td>{{ $estado->id }} </td>
-                <td>{{ $estado->nombre }} </td>
-                <td>{{ $estado->descripcion }} </td>
+                <td>{{ $categoria->id }} </td>
+                <td>{{ $categoria->nombre }} </td>
+                <td>{{ $categoria->descripcion }} </td>
+                <td>{{ $categoria->estado->nombre }} </td>
                 <td>
                     <div class="d-flex ">
                         <a href="" class="editar-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                            data-id="{{ $estado->id }}" data-nombre="{{ $estado->nombre }}"
-                            data-descripcion="{{ $estado->descripcion }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                            data-id="{{ $categoria->id }}" data-nombre="{{ $categoria->nombre }}"
+                            data-descripcion="{{ $categoria->descripcion }}" data-idestado="{{ $categoria->idEstado }}"><i
+                                class="fa-solid fa-pen-to-square"></i></a>
 
-                        <form method="POST" action="{{ route('eliminarEstado', $estado->id) }}" class="ms-2">
+                        <form method="POST" action="{{ route('eliminarCategoria', $categoria->id) }}" class="ms-2">
                             @csrf
                             @method('DELETE')
                             <button type="submit">
@@ -47,20 +54,28 @@
                     e.preventDefault();
 
                     // Obtener los datos del registro desde los atributos data
-                    let editarEstadoRoute = '{{ route('editarEstado', ':id') }}';
+                    let editarCategoriaRoute = '{{ route('editarCategoria', ':id') }}';
                     var id = $(this).data('id');
                     var nombre = $(this).data('nombre');
                     var descripcion = $(this).data('descripcion');
+                    var idEstado = $(this).data('idestado');
 
                     // Actualizar los valores del formulario
                     $('#formulario-editar #id').val(id);
                     $('#formulario-editar #nombre').val(nombre);
+                    $('#formulario-editar #idEstado').val(idEstado);
                     $('#formulario-editar #descripcion').val(descripcion);
-                    $('#formulario-editar').attr('action', editarEstadoRoute.replace(':id', id));
+                    $('#formulario-editar').attr('action', editarCategoriaRoute.replace(':id', id));
+                    console.log(nombre);
+                    console.log(idEstado);
+                    // Seleccionar el estado correspondiente en el select
 
+                    $('#formulario-editar #idEstado option[value="' + idEstado + '"]').prop('selected', true);
                     // Mostrar el modal de edición
                     $('#editarModal').modal('show');
                 });
+
+
 
                 // Capturar el clic en el botón "Nuevo"
                 $('#btnNuevo').click(function(e) {
@@ -70,7 +85,8 @@
                     $('#formulario-editar #id').val('');
                     $('#formulario-editar #nombre').val('');
                     $('#formulario-editar #descripcion').val('');
-                    $('#formulario-editar').attr('action', '{{ route('crearEstado') }}');
+                    $('#formulario-editar #idEstado').val('');
+                    $('#formulario-editar').attr('action', '{{ route('crearCategoria') }}');
                     // Mostrar el modal de edición
                     $('#editarModal').modal('show');
                 });
@@ -79,8 +95,34 @@
         </script>
     @endsection
 @endif
-@section('modal-title', 'Formulario de Estados')
+@section('modal-title', 'Formulario de Categorias')
 @section('modal-tbody')
+
+    <form id="formulario-editar" class="form text-center" method="POST" action=" {{route('crearCategoria') }}">
+        @csrf
+        <!-- Agrega un campo oculto para almacenar el ID del registro -->
+        <input type="hidden" id="id" name="id">
+
+        <label>
+            <input class="input" type="text" id="nombre" name="nombre" placeholder="" required="">
+            <span>Nombre</span>
+        </label>
+        <label>
+            <input class="input" type="text" id="descripcion" name="descripcion" placeholder="" required="">
+            <span>Descripción</span>
+        </label>
+        <label>
+            <select id="idEstado" name="idEstado" class="form-select form-select-sm">
+                <option value="0">Selecciona un Estado:</option>
+                @foreach ($estados as $estado)
+                    <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
+                @endforeach
+            </select>
+        </label>
+        <!-- Otros campos del formulario -->
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+    </form>
     <style>
         .form {
             display: flex;
@@ -221,21 +263,4 @@
             }
         }
     </style>
-    <form id="formulario-editar" class="form text-center" method="POST">
-        @csrf
-        <!-- Agrega un campo oculto para almacenar el ID del registro -->
-        <input type="hidden" id="id" name="id">
-
-        <label>
-            <input class="input" type="text" id="nombre" name="nombre" placeholder="" required="">
-            <span>Nombre</span>
-        </label>
-        <label>
-            <input class="input" type="text" id="descripcion" name="descripcion" placeholder="" required="">
-            <span>Descripción</span>
-        </label>
-        <!-- Otros campos del formulario -->
-        <button type="submit" class="btn btn-primary">Guardar cambios</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-    </form>
 @endsection

@@ -18,16 +18,17 @@
             <div class="card-head text-center">
                 <br>
                 @yield('btnNuevo')
+                @yield('nodata')
             </div>
             <div class="card-body">
 
                 <table id="myTable" class="table table-striped" style="width:100%">
 
                     <thead>
-                            @yield('thead')
+                        @yield('thead')
                     </thead>
                     <tbody>
-                            @yield('tbody')
+                        @yield('tbody')
                     </tbody>
                     <tfoot>
 
@@ -39,12 +40,15 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            $('#myTable').DataTable({
-                responsive: true,
-                language: {
-                    url: 'https://cdn.datatables.net/plug-ins/1.13.7/i18n/Spanish.json'
-                }
-            });
+            var datosDesdeServidor = document.getElementById(
+            'nodatos'); // Puedes tener datos o dejarlo como un array vacío
+
+            // Verifica si hay datos antes de inicializar DataTables
+            if (!datosDesdeServidor) {
+                $('#myTable').DataTable({
+                    responsive: true
+                });
+            }
         });
     </script>
 

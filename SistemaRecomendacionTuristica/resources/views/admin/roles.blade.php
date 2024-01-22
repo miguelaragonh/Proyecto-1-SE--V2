@@ -7,7 +7,9 @@
 @endsection
 
 @if ($roles->isEmpty())
-    <h3>No existen roles agregados</h3>
+    @section('nodata')
+        <h3 id='nodatos'>No existen categorias agregados</h3>
+    @endsection
 @else
     @section('thead')
         <tr>
@@ -65,10 +67,10 @@
                     $('#formulario-editar #descripcion').val(descripcion);
                     $('#formulario-editar').attr('action', editarRolRoute.replace(':id', id));
                     console.log(nombre);
-                    console.log( idEstado);
+                    console.log(idEstado);
                     // Seleccionar el estado correspondiente en el select
 
-                    $('#formulario-editar #idEstado option[value="'+idEstado+'"]').prop('selected', true);
+                    $('#formulario-editar #idEstado option[value="' + idEstado + '"]').prop('selected', true);
                     // Mostrar el modal de edición
                     $('#editarModal').modal('show');
                 });
@@ -235,7 +237,7 @@
             }
         }
     </style>
-    <form id="formulario-editar" class="form text-center" method="POST">
+    <form id="formulario-editar" class="form text-center" method="POST"  action=" {{route('crearRol') }}">
         @csrf
         <!-- Agrega un campo oculto para almacenar el ID del registro -->
         <input type="hidden" id="id" name="id">

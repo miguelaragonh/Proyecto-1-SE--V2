@@ -7,7 +7,9 @@
 @endsection
 
 @if ($estados->isEmpty())
-    <h3>No existen estados agregados</h3>
+    @section('nodata')
+        <h3 id='nodatos'>No existen categorias agregados</h3>
+    @endsection
 @else
     @section('thead')
         <tr>
@@ -223,7 +225,7 @@
             }
         }
     </style>
-    <form id="formulario-editar" class="form text-center" method="POST">
+    <form id="formulario-editar" class="form text-center" method="POST"  action=" {{route('crearEstado') }}">
         @csrf
         <!-- Agrega un campo oculto para almacenar el ID del registro -->
         <input type="hidden" id="id" name="id">
