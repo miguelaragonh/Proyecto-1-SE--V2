@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RolesController;
 use App\Models\Rol;
 use Illuminate\Support\Facades\Route;
 
@@ -28,11 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/favorites', function () {return view('favorites');})->name('favorites');
     Route::get('/error', function () {return view('error');})->name('error');
 
-    //Estados
-    Route::get('/estados',[EstadosController::class,'index'])->name('estados');
-    Route::post('/estados/crear',[EstadosController::class,'store'])->name('crearEstado');
-    Route::post('/estados/editar/{id}',[EstadosController::class,'update'])->name('editarEstado');
-    Route::delete('/estados/eliminar/{estado}',[EstadosController::class,'destroy'])->name('eliminarEstado');
+
 });
 
 
@@ -42,4 +40,16 @@ Route::middleware(['auth', 'role'])->group(function () {
     Route::post('/estados/crear',[EstadosController::class,'store'])->name('crearEstado');
     Route::post('/estados/editar/{id}',[EstadosController::class,'update'])->name('editarEstado');
     Route::delete('/estados/eliminar/{estado}',[EstadosController::class,'destroy'])->name('eliminarEstado');
+
+    //Roles
+    Route::get('/rol',[RolesController::class,'index'])->name('rol');
+    Route::post('/rol/crear',[RolesController::class,'store'])->name('crearRol');
+    Route::post('/rol/editar/{id}',[RolesController::class,'update'])->name('editarRol');
+    Route::delete('/rol/eliminar/{rol}',[RolesController::class,'destroy'])->name('eliminarRol');
+
+    //Categorias
+    Route::get('/categoria',[CategoriasController::class,'index'])->name('categoria');
+    Route::post('/categoria/crear',[CategoriasController::class,'store'])->name('crearCategoria');
+    Route::post('/categoria/editar/{id}',[CategoriasController::class,'update'])->name('editarCategoria');
+    Route::delete('/categoria/eliminar/{categoria}',[CategoriasController::class,'destroy'])->name('eliminarCategoria');
 });

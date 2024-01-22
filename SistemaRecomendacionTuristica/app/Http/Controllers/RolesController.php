@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estado;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 
 class RolesController extends Controller
@@ -11,54 +13,44 @@ class RolesController extends Controller
      */
     public function index()
     {
-        //
+        $estados = Estado::all();
+        $roles = Rol::with('estado')->get();
+        return view('admin.roles', compact('estados','roles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $rol = new Rol();
+        $rol->nombre = $request->nombre;
+        $rol->descripcion = $request->descripcion;
+        $rol->idEstado = $request->idEstado;
+        $rol->save();
+        return redirect()->route('rol');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        //
+        $rol = Rol::find($id);
+        $rol->nombre = $request->nombre;
+        $rol->descripcion = $request->descripcion;
+        $rol->idEstado = $request->idEstado;
+        $rol->save();
+        return redirect()->route('rol');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Rol $rol)
     {
-        //
+        $rol->delete();
+        return redirect()->route('rol');
     }
 }

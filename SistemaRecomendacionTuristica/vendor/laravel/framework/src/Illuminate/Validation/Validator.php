@@ -20,7 +20,8 @@ use RuntimeException;
 use stdClass;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class Validator implements ValidatorContract
+class
+Validator implements ValidatorContract
 {
     use Concerns\FormatsMessages,
         Concerns\ValidatesAttributes;
