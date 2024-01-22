@@ -68,6 +68,7 @@
                                             <h3>Administrar Roles</h3>
                                             <p>Gestiona los Roles</p>
                                         </div>
+                                        </a>
                                     </li>
                                     <li>
                                         <i class="fa-solid fa-list"></i>
@@ -76,6 +77,7 @@
                                             <h3>Administrar Categorias</h3>
                                             <p>Gestiona las Categorias Disponibles</p>
                                         </div>
+                                        </a>
                                     </li>
                                     <li>
                                         <i class="fa-solid fa-house"></i>
