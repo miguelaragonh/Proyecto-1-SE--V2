@@ -6,11 +6,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Login;
 
 class LoginController extends Controller
 {
-
-
     /**
      * Show the form for creating a new resource.
      */
@@ -28,7 +27,7 @@ class LoginController extends Controller
         return redirect()->route('welcome');
     }
 
-    public function registerAdmin(Request $request)
+  /*  public function registerAdmin(Request $request)
     {
         $usuario = new User();
         $usuario->name = $request->name;
@@ -40,7 +39,7 @@ class LoginController extends Controller
         $usuario->save();
         Auth::login($usuario);
         return redirect()->route('welcome');
-    }
+    }*/
 
     public function login(Request $request)
     {

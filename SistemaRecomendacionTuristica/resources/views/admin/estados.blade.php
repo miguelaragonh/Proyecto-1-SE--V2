@@ -1,4 +1,6 @@
 @extends('layouts.tables')
+@section('titulo', 'Gestionar Estados')
+
 @section('btnNuevo')
     <button class="btn btn-primary" id="btnNuevo" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id=""
         data-nombre="" data-descripcion=""><i class="fa-regular fa-square-plus"></i> Nuevo</button>

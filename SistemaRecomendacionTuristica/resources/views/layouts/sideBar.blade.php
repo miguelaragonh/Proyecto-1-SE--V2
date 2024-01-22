@@ -64,6 +64,7 @@
                                     </li>
                                     <li>
                                         <i class="fa-solid fa-user-tag"></i>
+                                        <a href="{{ route('rol') }}">
                                         <div class="item-title">
                                             <h3>Administrar Roles</h3>
                                             <p>Gestiona los Roles</p>

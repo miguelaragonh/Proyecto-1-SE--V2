@@ -14,7 +14,7 @@
         <br>
         <div class="card text-center">
             <br>
-            <h5>Gestionar de estados</h5>
+            <h5>@yield('titulo')</h5>
             <div class="card-head text-center">
                 <br>
                 @yield('btnNuevo')
