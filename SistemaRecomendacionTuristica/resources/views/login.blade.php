@@ -196,7 +196,7 @@
             <div class="col align-items-center flex-col">
                 <div class="text sign-in">
                     <h2>
-                        Bienvenidos a TuristiandoCR
+                        Bienvenidos
                     </h2>
                 </div>
                 <div class="img sign-in">
@@ -209,7 +209,7 @@
                 </div>
                 <div class="text sign-up">
                     <h2>
-                        Registrate en TuristiandoCR
+                        Registrate
                     </h2>
 
                 </div>
