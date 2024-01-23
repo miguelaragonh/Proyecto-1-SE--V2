@@ -83,7 +83,7 @@ select {
 }
 
 .form-group input {
-    width: 300px;
+    width: fit-content;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -96,7 +96,8 @@ input:focus {
     outline: none;
 }
 
-button {
+.row button {
+    margin-top: 20px;
     background-color: var(--primary);
     color: var(--white);
 }

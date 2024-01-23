@@ -1,5 +1,5 @@
 @extends('layouts.sideBar')
-@section('title', 'SRTCR | Estados')
+@section('title')
 @section('content')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
@@ -9,7 +9,7 @@
     <script defer src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script defer src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script>
     <script defer src="https://cdn.datatables.net/plug-ins/1.13.7/i18n/Spanish.json"></script>
-
+    <link rel="stylesheet" href="{{ asset('assets/table.css') }}">
     <div class="container">
         <br>
         <div class="card text-center">
