@@ -8,7 +8,6 @@
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script defer src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script defer src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script>
-    <script defer src="https://cdn.datatables.net/plug-ins/1.13.7/i18n/Spanish.json"></script>
     <link rel="stylesheet" href="{{ asset('assets/table.css') }}">
     <div class="container">
         <br>
@@ -40,13 +39,15 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var datosDesdeServidor = document.getElementById(
-            'nodatos'); // Puedes tener datos o dejarlo como un array vacío
+            var datosDesdeServidor = document.getElementById('nodatos');
 
             // Verifica si hay datos antes de inicializar DataTables
             if (!datosDesdeServidor) {
                 $('#myTable').DataTable({
-                    responsive: true
+                    responsive: true,
+                    language: {
+                        "url": '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+                    }
                 });
             }
         });
