@@ -1,5 +1,6 @@
 @extends('layouts.tables')
 @section('titulo', 'Gestionar Categorias')
+@section('title', 'STRCR-Categorias')
 
 @section('btnNuevo')
     <button class="btn btn-primary" id="btnNuevo" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id=""

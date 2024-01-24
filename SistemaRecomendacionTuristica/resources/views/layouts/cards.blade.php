@@ -1,5 +1,5 @@
 @extends('layouts.sideBar')
-@section('title', 'SRTCR | Home')
+@section('title', 'SRTCR-Home')
 @section('content')
 <!DOCTYPE html>
 <html lang="es">

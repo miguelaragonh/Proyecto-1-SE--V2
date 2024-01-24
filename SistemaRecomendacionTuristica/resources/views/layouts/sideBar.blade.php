@@ -65,9 +65,12 @@
                                         <li>
                                             <i class="fa-solid fa-users"></i>
                                             <div class="item-title">
+                                                <a href="{{ route('usuario') }}">
                                                 <h3>Administar Usuarios</h3>
                                                 <p>Gestiona los Usuarios Registrados</p>
                                             </div>
+                                        </a>
+
                                         </li>
                                         <li>
                                             <i class="fa-solid fa-user-tag"></i>

@@ -1,5 +1,6 @@
 @extends('layouts.tables')
 @section('titulo', 'Gestionar Lugares')
+@section('title', 'STRCR-Lugares')
 
 @section('btnNuevo')
     <button class="btn btn-primary" id="btnNuevo" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id=""
@@ -90,7 +91,7 @@
 
                     // Seleccionar el estado correspondiente en el select
 
-                    $('#formulario-editar #idEstado option[value="' + idEstado + '"]').prop('selected', true);
+                    //$('#formulario-editar #idEstado option[value="' + idEstado + '"]').prop('selected', true);
                     // Mostrar el modal de edición
                     $('#editarModal').modal('show');
                 });

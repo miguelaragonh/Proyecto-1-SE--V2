@@ -5,6 +5,7 @@ use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LugaresController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\UsuarioController;
 use App\Models\Rol;
 use Illuminate\Support\Facades\Route;
 
@@ -54,9 +55,17 @@ Route::middleware(['auth', 'role'])->group(function () {
     Route::post('/categoria/editar/{id}',[CategoriasController::class,'update'])->name('editarCategoria');
     Route::delete('/categoria/eliminar/{categoria}',[CategoriasController::class,'destroy'])->name('eliminarCategoria');
 
-    //Lugaress
+    //Lugares
     Route::get('/lugar',[LugaresController::class,'index'])->name('lugar');
     Route::post('/lugar/crear',[LugaresController::class,'store'])->name('crearLugar');
     Route::post('/lugar/editar/{id}',[LugaresController::class,'update'])->name('editarLugar');
     Route::delete('/lugar/eliminar/{lugar}',[LugaresController::class,'destroy'])->name('eliminarLugar');
+
+     //Usuarios
+    Route::get('/error2', function () {return view('error2');})->name('error2');
+
+     Route::get('/usuario',[UsuarioController::class,'index'])->name('usuario');
+     Route::post('/usuario/crear',[UsuarioController::class,'store'])->name('nuevoUsuario');
+     Route::post('/usuario/editar/{id}',[UsuarioController::class,'update'])->name('editarUsuario');
+     Route::delete('/usuario/eliminar/{usuario}',[UsuarioController::class,'destroy'])->name('eliminarUsuario');
 });
