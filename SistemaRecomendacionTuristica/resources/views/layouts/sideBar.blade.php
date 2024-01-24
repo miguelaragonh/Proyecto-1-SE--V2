@@ -28,6 +28,7 @@
                 </a>
                 <nav>
                     <ul class="navigation hide">
+                        @if(auth()->user()->idRol == 1)
                         <li>
                             <button>
                                 <i class="fa-solid fa-sliders"></i>Administracion
@@ -103,6 +104,7 @@
                                 </div>
                             </div>
                         </li>
+                        @endif
                         <li>
                             <button>
                                 <i class="fa-solid fa-user"></i>Hola, {{ auth()->user()->name }}
@@ -251,7 +253,8 @@
         // Después de 2 segundos, agrega la clase 'hidden' al loader
         setTimeout(function() {
             document.querySelector('.loader-container').classList.add('hidden');
-        }, 1500);
+            document.querySelector('.wrapper').style.overflow = 'visible';
+        }, 500);
     });
 </script>
 
