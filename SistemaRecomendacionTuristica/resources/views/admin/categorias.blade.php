@@ -37,7 +37,8 @@
                         <form method="POST" action="{{ route('eliminarCategoria', $categoria->id) }}" class="ms-2">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">
+                            <button type="submit" style="border: none;
+                            outline: none;">
                                 <i class="fa-solid fa-trash" style="color: #f50000;"></i>
                             </button>
                         </form>
@@ -85,7 +86,7 @@
                     $('#formulario-editar #id').val('');
                     $('#formulario-editar #nombre').val('');
                     $('#formulario-editar #descripcion').val('');
-                    $('#formulario-editar #idEstado').val('');
+                    $('#formulario-editar #idEstado').val('0');
                     $('#formulario-editar').attr('action', '{{ route('crearCategoria') }}');
                     // Mostrar el modal de edición
                     $('#editarModal').modal('show');
@@ -202,6 +203,14 @@
         }
 
         .form label .input {
+            width: 100%;
+            padding: 10px 10px 20px 10px;
+            outline: 0;
+            border: 1px solid rgba(105, 105, 105, 0.397);
+            border-radius: 10px;
+        }
+
+        .form label .form-select {
             width: 100%;
             padding: 10px 10px 20px 10px;
             outline: 0;

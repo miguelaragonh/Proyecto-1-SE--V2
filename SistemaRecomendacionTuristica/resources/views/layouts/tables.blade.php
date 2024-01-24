@@ -20,7 +20,6 @@
                 @yield('nodata')
             </div>
             <div class="card-body">
-
                 <table id="myTable" class="table table-striped" style="width:100%">
 
                     <thead>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LugaresController;
 use App\Http\Controllers\RolesController;
 use App\Models\Rol;
 use Illuminate\Support\Facades\Route;
@@ -52,4 +53,10 @@ Route::middleware(['auth', 'role'])->group(function () {
     Route::post('/categoria/crear',[CategoriasController::class,'store'])->name('crearCategoria');
     Route::post('/categoria/editar/{id}',[CategoriasController::class,'update'])->name('editarCategoria');
     Route::delete('/categoria/eliminar/{categoria}',[CategoriasController::class,'destroy'])->name('eliminarCategoria');
+
+    //Lugaress
+    Route::get('/lugar',[LugaresController::class,'index'])->name('lugar');
+    Route::post('/lugar/crear',[LugaresController::class,'store'])->name('crearLugar');
+    Route::post('/lugar/editar/{id}',[LugaresController::class,'update'])->name('editarLugar');
+    Route::delete('/lugar/eliminar/{lugar}',[LugaresController::class,'destroy'])->name('eliminarLugar');
 });

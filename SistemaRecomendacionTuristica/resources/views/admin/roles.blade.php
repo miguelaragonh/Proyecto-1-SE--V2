@@ -38,7 +38,8 @@
                         <form method="POST" action="{{ route('eliminarRol', $rol->id) }}" class="ms-2">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">
+                            <button type="submit" style="border: none;
+                            outline: none;">
                                 <i class="fa-solid fa-trash" style="color: #f50000;"></i>
                             </button>
                         </form>
@@ -98,6 +99,32 @@
 @endif
 @section('modal-title', 'Formulario de Roles')
 @section('modal-tbody')
+    <form id="formulario-editar" class="form text-center" method="POST"  action=" {{route('crearRol') }}">
+        @csrf
+        <!-- Agrega un campo oculto para almacenar el ID del registro -->
+        <input type="hidden" id="id" name="id">
+
+        <label>
+            <input class="input" type="text" id="nombre" name="nombre" placeholder="" required="">
+            <span>Nombre</span>
+        </label>
+        <label>
+            <input class="input" type="text" id="descripcion" name="descripcion" placeholder="" required="">
+            <span>Descripción</span>
+        </label>
+        <label>
+            <select id="idEstado" name="idEstado" class="form-select form-select-sm">
+                <option value="0">Selecciona un Estado:</option>
+                @foreach ($estados as $estado)
+                    <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
+                @endforeach
+            </select>
+        </label>
+        <!-- Otros campos del formulario -->
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+    </form>
+
     <style>
         .form {
             display: flex;
@@ -184,6 +211,14 @@
             border-radius: 10px;
         }
 
+        .form label .form-select {
+            width: 100%;
+            padding: 10px 10px 20px 10px;
+            outline: 0;
+            border: 1px solid rgba(105, 105, 105, 0.397);
+            border-radius: 10px;
+        }
+
         .form label .input+span {
             position: absolute;
             left: 10px;
@@ -238,29 +273,4 @@
             }
         }
     </style>
-    <form id="formulario-editar" class="form text-center" method="POST"  action=" {{route('crearRol') }}">
-        @csrf
-        <!-- Agrega un campo oculto para almacenar el ID del registro -->
-        <input type="hidden" id="id" name="id">
-
-        <label>
-            <input class="input" type="text" id="nombre" name="nombre" placeholder="" required="">
-            <span>Nombre</span>
-        </label>
-        <label>
-            <input class="input" type="text" id="descripcion" name="descripcion" placeholder="" required="">
-            <span>Descripción</span>
-        </label>
-        <label>
-            <select id="idEstado" name="idEstado" class="form-select form-select-sm">
-                <option value="0">Selecciona un Estado:</option>
-                @foreach ($estados as $estado)
-                    <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
-                @endforeach
-            </select>
-        </label>
-        <!-- Otros campos del formulario -->
-        <button type="submit" class="btn btn-primary">Guardar cambios</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-    </form>
 @endsection
