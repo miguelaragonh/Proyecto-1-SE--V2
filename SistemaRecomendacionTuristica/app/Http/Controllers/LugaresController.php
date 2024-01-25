@@ -23,6 +23,13 @@ class LugaresController extends Controller
         return view('admin.lugares', compact('estados', 'categorias', 'lugares'));
     }
 
+
+    public function lugares()
+    {
+        $lugares = Lugar::with('estado', 'categoria')->get();
+        return view('welcome', compact('lugares'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -26,28 +26,28 @@
                             <div class="input-group">
                                 <i class="fa-solid fa-user"></i>
                                 <input type="text" placeholder="Nombre" name="name" id="name"
-                                    oninput="validarNombre()">
+                                    oninput="validarNombre()" required>
                             </div>
                             <!-- Muestra el mensaje de error para el nombre -->
                             <p class="error-message" id="error-name"></p>
                             <div class="input-group">
                                 <i class="fa-solid fa-user"></i>
                                 <input type="text" placeholder="Apellidos" name="lastname" id="lastname"
-                                    oninput="validarApellidos()">
+                                    oninput="validarApellidos()" required>
                             </div>
                             <!-- Muestra el mensaje de error para los apellidos -->
                             <p class="error-message" id="error-lastname"></p>
                             <div class="input-group">
                                 <i class="fa-solid fa-envelope"></i>
                                 <input type="email" placeholder="Correo Electronico" name="email" id="email"
-                                    oninput="validarEmail()">
+                                    oninput="validarEmail()" required>
                             </div>
                             <!-- Muestra el mensaje de error para el correo electrónico -->
                             <p class="error-message" id="error-email"></p>
                             <div class="input-group">
                                 <i class="fa-solid fa-lock"></i>
                                 <input type="text" placeholder="Contraseña" name="password" id="password"
-                                    oninput="validarPassword()">
+                                    oninput="validarPassword()" required>
                             </div>
                             <!-- Muestra el mensaje de error para la contraseña -->
                             <p class="error-message" id="error-password"></p>
@@ -169,7 +169,7 @@
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="remember" value=""
-                                    id="form2Example33" />
+                                    id="form2Example33"  />
                                 <label class="form-check-label" for="form2Example33">
                                     Recuerdame
                                 </label>
@@ -196,7 +196,7 @@
             <div class="col align-items-center flex-col">
                 <div class="text sign-in">
                     <h2>
-                        Bienvenidos
+                        Bienvenidos a TuristiandoCR
                     </h2>
                 </div>
                 <div class="img sign-in">
@@ -209,7 +209,7 @@
                 </div>
                 <div class="text sign-up">
                     <h2>
-                        Registrate
+                        Registrate en TuristiandoCR
                     </h2>
 
                 </div>

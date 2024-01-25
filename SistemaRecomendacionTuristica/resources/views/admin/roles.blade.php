@@ -105,11 +105,11 @@
         <input type="hidden" id="id" name="id">
 
         <label>
-            <input class="input" type="text" id="nombre" name="nombre" placeholder="" required="">
+            <input class="input" type="text" id="nombre" name="nombre" placeholder="" required>
             <span>Nombre</span>
         </label>
         <label>
-            <input class="input" type="text" id="descripcion" name="descripcion" placeholder="" required="">
+            <input class="input" type="text" id="descripcion" name="descripcion" placeholder="" required>
             <span>Descripción</span>
         </label>
         <label>

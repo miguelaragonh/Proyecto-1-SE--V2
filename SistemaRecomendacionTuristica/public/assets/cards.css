@@ -144,3 +144,10 @@ h1{
     margin-bottom: 1%;
     color: var(--text);
 }
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+

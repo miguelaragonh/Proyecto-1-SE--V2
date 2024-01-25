@@ -126,21 +126,21 @@
         <input type="hidden" id="id" name="id">
 
         <label>
-            <input class="input" type="text" id="nombre" name="nombre" placeholder="" required="">
+            <input class="input" type="text" id="nombre" name="nombre" placeholder="" required>
             <span>Nombre</span>
         </label>
         <label>
-            <input class="input" type="text" id="descripcion" name="descripcion" placeholder="" required="">
+            <input class="input" type="text" id="descripcion" name="descripcion" placeholder="" required>
             <span>Descripción</span>
         </label>
 
         <label>
-            <input class="input" type="text" id="ubicacion" name="ubicacion" placeholder="" required="">
+            <input class="input" type="text" id="ubicacion" name="ubicacion" placeholder="" required>
             <span>Ubicación</span>
         </label>
 
         <label>
-            <select id="idEstado" name="idEstado" class="form-select form-select-sm">
+            <select id="idEstado" name="idEstado" class="form-select form-select-sm" required>
                 <option value="0">Selecciona un Estado:</option>
                 @foreach ($estados as $estado)
                     <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
@@ -149,7 +149,7 @@
         </label>
 
         <label>
-            <select id="idCategoria" name="idCategoria" class="form-select form-select-sm">
+            <select id="idCategoria" name="idCategoria" class="form-select form-select-sm" required>
                 <option value="0">Selecciona una Categoria:</option>
                 @foreach ($categorias as $categoria)
                     <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
@@ -160,7 +160,6 @@
         <label>
             <input class="input" type="file" id="imagen" name="imagen" placeholder=""
                 accept="image/*">
-
         </label>
         <!-- Otros campos del formulario -->
         <button type="submit" class="btn btn-primary">Guardar cambios</button>

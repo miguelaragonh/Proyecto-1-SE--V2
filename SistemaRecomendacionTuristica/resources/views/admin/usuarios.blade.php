@@ -142,21 +142,21 @@
         <input type="hidden" id="id" name="id">
 
         <label>
-            <input class="input" type="text" id="name" name="name" placeholder="" required="">
+            <input class="input" type="text" id="name" name="name" placeholder="" required>
             <span>Nombre</span>
         </label>
         <label>
-            <input class="input" type="text" id="lastname" name="lastname" placeholder="" required="">
+            <input class="input" type="text" id="lastname" name="lastname" placeholder="" required>
             <span>Apellidos</span>
         </label>
 
         <label>
-            <input class="input" type="email" id="email" name="email" placeholder="" required="">
+            <input class="input" type="email" id="email" name="email" placeholder="" required>
             <span>Correo Electronico</span>
         </label>
 
         <label>
-            <select id="idEstado" name="idEstado" class="form-select form-select-sm">
+            <select id="idEstado" name="idEstado" class="form-select form-select-sm" required>
                 <option value="0">Selecciona un Estado:</option>
                 @foreach ($estados as $estado)
                     <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
@@ -165,7 +165,7 @@
         </label>
 
         <label>
-            <select id="idRol" name="idRol" class="form-select form-select-sm">
+            <select id="idRol" name="idRol" class="form-select form-select-sm" required>
                 <option value="0">Selecciona un Rol</option>
                 @foreach ($roles as $rol)
                     <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
@@ -175,7 +175,6 @@
 
         <label>
             <input class="input" type="file" id="img" name="img" placeholder="" accept="image/*">
-
         </label>
         @error('name')
             <div class="text-danger">{{ $message }}</div>
