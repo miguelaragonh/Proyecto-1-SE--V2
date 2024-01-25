@@ -68,4 +68,6 @@ Route::middleware(['auth', 'role'])->group(function () {
      Route::post('/usuario/crear',[UsuarioController::class,'store'])->name('nuevoUsuario');
      Route::post('/usuario/editar/{id}',[UsuarioController::class,'update'])->name('editarUsuario');
      Route::delete('/usuario/eliminar/{usuario}',[UsuarioController::class,'destroy'])->name('eliminarUsuario');
+     Route::put('/usuario/resetear/contraseña/{id}',[UsuarioController::class,'resetPassword'])->name('resetPass');
+     Route::put('/usuario/cambiar/contraseña/{id}',[UsuarioController::class,'changePassword'])->name('cambioPass');
 });

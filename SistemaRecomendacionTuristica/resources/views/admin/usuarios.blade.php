@@ -31,10 +31,18 @@
                 <td>{{ $usuario->name }} </td>
                 <td>{{ $usuario->lastname }} </td>
                 <td>{{ $usuario->email }} </td>
+                @if ($usuario->img)
                 <td>
                     <img style="border-radius: 10px; overflow: hidden;" src="{{ asset($usuario->img) }}"
                         alt="Imagen del usuario">
                 </td>
+                @else
+                <td>
+                    <img style="border-radius: 10px; overflow: hidden;" src="{{ asset('storage/pdf.png') }}"
+                        alt="Imagen del usuario">
+                </td>
+                @endif
+
                 <td>{{ $usuario->estado->nombre }}</td>
                 <td>{{ $usuario->rol->nombre }}</td>
 
@@ -56,9 +64,9 @@
                             </button>
                         </form>
 
-                        <form method="POST" action="{{ route('eliminarUsuario', $usuario->id) }}" class="ms-2">
+                        <form method="POST" action="{{ route('resetPass', $usuario->id) }}" class="ms-2">
                             @csrf
-                            @method('DELETE')
+                            @method('PUT')
                             <button type="submit" style="border: none;
                             outline: none;">
                                 <i class="fa-solid fa-key" style="color: #000000;"></i>
@@ -166,7 +174,7 @@
         </label>
 
         <label>
-            <input class="input" type="file" id="imagen" name="imagen" placeholder="" accept="image/*">
+            <input class="input" type="file" id="img" name="img" placeholder="" accept="image/*">
 
         </label>
         @error('name')
