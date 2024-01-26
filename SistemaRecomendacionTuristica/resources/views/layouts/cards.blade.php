@@ -10,7 +10,9 @@
 
     <body>
         <div class="wrapper">
-            @yield('lugares')
+            <div class="cards">
+                @yield('lugares')
+            </div>
         </div>
     </body>
     <script>

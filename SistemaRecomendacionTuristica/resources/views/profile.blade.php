@@ -24,8 +24,7 @@
                                                     style="background-image:  url('{{ asset(auth()->user()->img) }}');">
                                                 @else
                                                     <div id="imagePreview"
-                                                        style="background-image:  url('{{ asset('storage/pdf.png') }}');">
-
+                                                        style="background-image:  url('{{ asset('images/user.png') }}');">
                                             @endif
                                         </div>
                                     </div>
@@ -54,19 +53,19 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="fullName">Nombre</label>
-                                    <input type="text" placeholder="{{ auth()->user()->name }}">
+                                    <input type="text" value="{{ auth()->user()->name }}" id="user-name" readonly>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="fullName">Apellidos</label>
-                                    <input type="text" placeholder="{{ auth()->user()->lastname }}">
+                                    <input type="text" value="{{ auth()->user()->lastname }}" id="user-lastname" readonly>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="email">Correo</label>
-                                    <input type="text" placeholder="{{ auth()->user()->email }}">
+                                    <input type="text" value="{{ auth()->user()->email }}" id="user-email" readonly>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +73,7 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="preferencias">Preferencias</label>
-                                    <select id="preferencias" name="preferencias">
+                                    <select name="preferencias" id="user-preferences" disabled>
                                         <option value="" selected>No Definido</option>
                                         <option value="montaña">Montaña</option>
                                         <option value="playa">Playa</option>
@@ -86,8 +85,11 @@
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-right">
-                                    <button type="button" id="submit" name="submit" class="btn btn-dark">Guardar
+                                    <button type="button" id="submit" name="submit" class="btn btn-dark"onclick="saveChanges()" hidden>Guardar
                                         Cambios</button>
+                                </div>
+                                <div class="text-right">
+                                    <button type="button" id="editar" class="btn btn-dark" onclick="updateInfo()">Editar</button>
                                 </div>
                             </div>
                         </div>
@@ -113,5 +115,38 @@
         $("#imageUpload").change(function() {
             readURL(this);
         });
+
+        function updateInfo() {
+            var botonEditar = document.getElementById("editar");
+            var botonOcultar = document.getElementById("submit");
+            var input1 = document.getElementById("user-name")
+            var input2 = document.getElementById("user-lastname")
+            var input3 = document.getElementById("user-email")
+            var select = document.getElementById("user-preferences")
+            if (input1.readOnly) {
+                input1.readOnly = false
+                input2.readOnly = false
+                input3.readOnly = false
+                select.removeAttribute("disabled");
+                botonOcultar.hidden = false
+                botonEditar.hidden = true
+            }
+        }
+        function saveChanges() {
+            var botonEditar = document.getElementById("editar");
+            var botonOcultar = document.getElementById("submit");
+            var input1 = document.getElementById("user-name")
+            var input2 = document.getElementById("user-lastname")
+            var input3 = document.getElementById("user-email")
+            var select = document.getElementById("user-preferences")
+            if (!input1.readOnly) {
+                input1.readOnly = true
+                input2.readOnly = true
+                input3.readOnly = true
+                select.setAttribute("disabled", "disabled");
+                botonOcultar.hidden = true
+                botonEditar.hidden = false
+            }
+        }
     </script>
 @endsection

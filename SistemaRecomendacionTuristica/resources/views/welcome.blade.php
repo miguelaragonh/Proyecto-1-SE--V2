@@ -3,10 +3,9 @@
 @section('lugares')
 
 @foreach ($lugares as $lugar)
-    <div class="cards">
         <article class="card">
             <div class="card__preview">
-                <img src="{{ asset($lugar->imagen) }}" alt="">
+                <img src="{{ asset($lugar->imagen) }}" alt=" ">
                 <div class="card__price">
                     {{ $lugar->categoria->nombre }}
                 </div>
@@ -41,7 +40,6 @@
                 </div>
             </div>
         </article>
-    </div>
     @endforeach
 
 @endsection

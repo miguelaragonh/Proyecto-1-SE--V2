@@ -2,7 +2,6 @@
 <html lang="es">
 <link rel="stylesheet" href="{{ asset('assets/sidebar.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/loader.css') }}">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -176,10 +175,10 @@
             </div>
         </header>
         <div class="main">
-            <div class="content">
+            <div class="content">                
                 <div class="loader-container">
-                    <svg style="left: 50%;
-            top: 50%;
+                <svg style="left: 50%;
+                    top: 50%;
             position: absolute;
             transform: translate(-50%, -50%) matrix(1, 0, 0, 1, 0, 0);"
                         preserveAspectRatio="xMidYMid meet" viewBox="0 0 187.3 93.7" height="300px" width="400px">
@@ -238,6 +237,7 @@
             time: '0.5s', // default: '0.3s'
             mixColor: '#fff', // default: '#fff'
             backgroundColor: '#fff', // default: '#fff'
+            color: '#FAFAFA',
             buttonColorDark: '#100f2c', // default: '#100f2c'
             buttonColorLight: '#fff', // default: '#fff'
             saveInCookies: false, // default: true,
@@ -254,7 +254,8 @@
         setTimeout(function() {
             document.querySelector('.loader-container').classList.add('hidden');
             document.querySelector('.wrapper').style.overflow = 'visible';
-        }, 500);
+            document.querySelector('body').style.overflow = 'visible';
+        }, 1500);
     });
 </script>
 

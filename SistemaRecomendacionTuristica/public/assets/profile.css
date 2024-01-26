@@ -21,6 +21,10 @@ body {
     font-size: 14px;
 }
 
+.wrapper{
+    background-color: var(--background);
+}
+
 .container {
     margin-top: 2%;
     border-radius: 1.5rem;
@@ -67,6 +71,7 @@ select {
     border-left: none;
     border-right: none;
     border-bottom: 1px solid var(--link-gray-hover);
+    background-color: #ffffff00;
 }
 
 .form-control {
@@ -89,6 +94,7 @@ select {
     border-right: none;
     border-bottom: 1px solid var(--link-gray-hover);
     color: var(--primary);
+    background-color: #ffffff00;
     font-size: 16px;
 }
 
@@ -104,12 +110,14 @@ input:focus {
 
 .row {
     margin-top: 10px;
+    background-color: #ffffff00;
 }
 
 .card {
     border-radius: 5px;
     border: 0;
     margin-bottom: 1rem;
+    background-color: #ffffff00;
 }
 
 /*Upload Button*/
