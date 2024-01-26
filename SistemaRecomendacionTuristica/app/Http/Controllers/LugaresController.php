@@ -54,7 +54,7 @@ class LugaresController extends Controller
 
     public function guardarImg(Request $request){
         if ($request->isMethod('POST')) {
-            $file = $request->file('img');
+            $file = $request->file('imagen');
             $filename = date('YmdHi') . $request->input('name');
             $file->storeAs('', $filename . '.' . $file->extension(), 'public');
             $ubicacionImg = 'storage/' . $filename . '.' . $file->extension();

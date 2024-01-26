@@ -25,7 +25,7 @@
                 <div class="card__bottom">
 
                     <div class="card__properties">
-                        2 camas | 2 Personas Habitacion
+                       
                     </div>
 
 

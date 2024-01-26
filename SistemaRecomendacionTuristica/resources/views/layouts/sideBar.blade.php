@@ -175,7 +175,7 @@
             </div>
         </header>
         <div class="main">
-            <div class="content">                
+            <div class="content">
                 <div class="loader-container">
                 <svg style="left: 50%;
                     top: 50%;
@@ -195,7 +195,13 @@
                 @yield('content')
             </div>
         </div>
+        <section>
+        <img src="images/srtcr.png">
+        <p class="copyright">&copy Copyright DestinosCR - 2024</p>
+    </section>
     </div>
+
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://kit.fontawesome.com/ebacb183db.js" crossorigin="anonymous"></script>
