@@ -20,12 +20,12 @@
                 <p class="card__description">
                     {{ $lugar->descripcion }}
                 </p>
-                
+
                 <div hidden></div>
 
                 <div class="card__bottom">
                     <div class="card__properties">
-                       
+
                     </div>
 
 
@@ -56,10 +56,10 @@
                     var name = $(this).data('nombre')
                     var descrip = $(this).data('descripcion')
                     var ubic = $(this).data('ubicacion')
-                    
-                    $('.card__title').val(name);
-                    $('.card__address').val(ubic);
-                    $('.card__description').val(descrip);
+
+                    $('.card__title').text(name);
+                    $('.card__address').text(ubic);
+                    $('.card__description').text(descrip);
                     // Mostrar el modal de edición
                     $('.modal').modal('show');
                 });
