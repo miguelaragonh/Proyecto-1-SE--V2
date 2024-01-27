@@ -1,6 +1,5 @@
 /.phpunit.cache
 
-.env
 .env.backup
 .env.production
 .phpunit.result.cache

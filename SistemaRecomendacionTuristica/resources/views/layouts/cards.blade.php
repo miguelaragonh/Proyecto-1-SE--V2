@@ -10,6 +10,7 @@
             <div class="cards">@yield('lugares')</div>
         </div>
     </body>
+    
     <script>
         const likeButtons = document.querySelectorAll(".card__btn");
         likeButtons.forEach((likeButton) => {
