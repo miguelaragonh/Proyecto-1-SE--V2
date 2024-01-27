@@ -1,146 +1,197 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-:root {
-    --primary: #111926;
-    --white: #fff;
-    --background: #F8F8FF;
-    --gray: #D3D3D3;
-    --text: #262626;
-    --like: #FF3040;
-}
 
+/* This pen */
 body {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-    box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+	text-rendering: optimizeLegibility;
+	font-weight: initial;
 }
 
-* {
-    font-family: 'Poppins', sans-serif;
-}
-
-.cards{
-    margin-top: 0.5%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.card {
-    background-color: rgb(255, 255, 255);
-    border-radius: 1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 6px;
-    display: flex;
-    height: 29rem;
-    flex-direction: column;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    margin-left: 5%;
-    width: calc(22rem - 20px); /* Establece el ancho deseado para cada elemento, restando el margen entre ellos */
-    margin: 10px; /* Establece un margen entre los elementos */
-    box-sizing: border-box; /* Asegura que el margen no afecte el ancho real del elemento */
-}
-
-.card:hover {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 16px;
-}
-
-.card__preview {
-    height: 12rem;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
-.card__preview img {
+.wrapper{
     width: 100%;
     height: 100%;
+    margin: 0;
+}
+
+/* Cards */
+.postcard {
+  flex-wrap: wrap;
+  display: flex;
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+	height: fit-content;
+  a {
+    color: inherit;
+  }
+	
+	h1,	.h1 {
+		margin-bottom: 0.5rem;
+		font-weight: 500;
+		line-height: 1.2;
+	}
+	
+	.small {
+		font-size: 14px;
+	}
+
+  .postcard__img {
+    height: 100%;
+    width: 100%;
     object-fit: cover;
-    transition: all 0.8s ease-out;
-}
+  }
 
-.card:hover .card__preview img {
-    transform: scale(1.35);
-}
+  .postcard__bar {
+    margin-left: 1%;
+    width: 50px;
+    height: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #8e8e8e;
+    transition: width 0.2s ease;
+  }
 
-.card:hover{
-    box-shadow: 2px 2px 10px var(--primary);
-}
-
-.card__address {
-    margin-top: 0.5rem;
-}
-
-.card__price {
-    background-color: var(--white);
-    color: var(--text);
-    z-index: 1;
-    position: absolute;
-    bottom: 1.25rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.5rem;
-    left: 1.25rem;
-    font-weight: bold;
-}
-
-.card__content {
-    padding: 1.25rem;
+  .postcard__text {
+    position: relative;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    color: var(--text);
-}
+    color: #110f16;
+  }
+  
+  .postcard__title,.postcard__subtitle {
+    margin-left: 1%;
+  }
 
-.card__bottom {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card__description {
-    margin-top: 0.5rem;
-    display: -webkit-box;
+  .postcard__preview-txt {
     overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
-}
-
-.card__buttons {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.card__btn {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card__btn svg {
-    height: 2rem;
-    width: 2rem;
-    stroke: var(--text);
-    stroke-width: 1.5px;
-}
-
-.card__btn--like svg {
-    stroke: var(--like);
-    fill: var(--like);
-}
-
-.wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
+    text-overflow: ellipsis;
+    text-align: justify;
     height: 100%;
+  }
+
+  .postcard__tagbox {
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 14px;
+    margin: 20px 0 0 0;
+		padding: 0;
+    justify-content: center;
+
+    .tag__item {
+      display: inline-block;
+      background: rgba(31, 31, 31, 0.4);
+      border-radius: 3px;
+      padding: 2.5px 10px;
+      margin: 0 5px 5px 0;
+      cursor: default;
+      user-select: none;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: rgba(83, 83, 83, 0.8);
+      }
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(-70deg, #7c7c7cb7, transparent 50%);
+    opacity: 1;
+    border-radius: 10px;
+  }
+
+  &:hover .postcard__bar {
+    width: 100px;
+  }
 }
 
+@media screen and (min-width: 769px) {
+  .postcard {
+    flex-wrap: inherit;
+
+    .postcard__title {
+      font-size: 2rem;
+    }
+
+    .postcard__tagbox {
+      justify-content: start;
+    }
+
+    .postcard__img {
+      max-width: 300px;
+      max-height: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    .postcard__text {
+      padding: 3rem;
+      width: 100%;
+    }
+
+    .media.postcard__text:before {
+      content: "";
+      position: absolute;
+      display: block;
+      background: #18151f;
+      top: -20%;
+      height: 130%;
+      width: 55px;
+    }
+
+    &:hover .postcard__img {
+      transform: scale(1.1);
+    }
+
+    &:nth-child(2n+1) {
+      flex-direction: row;
+    }
+
+    &:nth-child(2n+0) {
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(2n+1) .postcard__text::before {
+      left: -12px !important;
+      transform: rotate(4deg);
+    }
+
+    &:nth-child(2n+0) .postcard__text::before {
+      right: -12px !important;
+      transform: rotate(-4deg);
+    }
+  }
+}
+@media screen and (min-width: 1024px){
+	.postcard__text {
+      padding: 2rem 3.5rem;
+    }
+		
+	.postcard__text:before {
+      content: "";
+      position: absolute;
+      display: block;
+      
+      top: -20%;
+      height: 130%;
+      width: 55px;
+    }
+	
+  .postcard.dark {
+		.postcard__text:before {
+			background: #18151f;
+		}
+  }
+	.postcard.light {
+		.postcard__text:before {
+			background: #e1e5ea;
+		}
+  }
+}
