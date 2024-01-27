@@ -19,9 +19,6 @@
         < script src = "https://cdn.jsdelivr.net/npm/sweetalert2@10" >
     </script>
     </script>
-
-
-
     <div class="wrapper">
         <header class="menu__wrapper">
             <div class="menu__bar">
@@ -198,17 +195,10 @@
                 @yield('content')
             </div>
         </div>
-        <section>
-            <img src="images/srtcr.png">
-            <p class="copyright">&copy Copyright DestinosCR - 2024</p>
-        </section>
     </div>
-
-
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://kit.fontawesome.com/ebacb183db.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 
 <script>
     function showConfirmation() {
@@ -237,26 +227,6 @@
             }
         });
     }
-
-    function addDarkmodeWidget() {
-        const options = {
-            bottom: '64px', // default: '32px'
-            //right: 'unset', // default: '32px'
-            //left: '32px', // default: 'unset'
-            time: '0.5s', // default: '0.3s'
-            mixColor: '#fff', // default: '#fff'
-            backgroundColor: '#fff', // default: '#fff'
-            color: '#FAFAFA',
-            buttonColorDark: '#100f2c', // default: '#100f2c'
-            buttonColorLight: '#fff', // default: '#fff'
-            saveInCookies: false, // default: true,
-            label: '🌓', // default: ''
-            autoMatchOsTheme: true // default: true
-        }
-        new Darkmode(options).showWidget();
-    }
-    window.addEventListener('load', addDarkmodeWidget);
-
     // Después de que la página haya cargado
     document.addEventListener("DOMContentLoaded", function() {
         // Después de 2 segundos, agrega la clase 'hidden' al loader

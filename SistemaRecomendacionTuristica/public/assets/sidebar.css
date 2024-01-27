@@ -14,20 +14,6 @@
     --navbar-height: 64px;
 }
 
-section{
-    text-align: center;
-    bottom: 0;
-    width: 100%;
-    background-color: #000000; /* Ajusta el color de fondo según tus preferencias */
-   
-}
-
-.copyright{
-    color:#FFFFFF;
-    font-size: 13px;
-    margin:20px;
-}
-
 body {
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
