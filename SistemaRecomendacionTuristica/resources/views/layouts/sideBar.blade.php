@@ -2,6 +2,7 @@
 <html lang="es">
 <link rel="stylesheet" href="{{ asset('assets/sidebar.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/loader.css') }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,8 @@
     </script>
     </script>
 
+
+
     <div class="wrapper">
         <header class="menu__wrapper">
             <div class="menu__bar">
@@ -27,82 +30,82 @@
                 </a>
                 <nav>
                     <ul class="navigation hide">
-                        @if(auth()->user()->idRol == 1)
-                        <li>
-                            <button>
-                                <i class="fa-solid fa-sliders"></i>Administracion
-                                <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1"
-                                    width="16">
-                                    <path
-                                        d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z">
-                                    </path>
-                                </svg>
-                            </button>
-                            <div class="dropdown__wrapper">
-                                <div class="dropdown">
-                                    <ul class="list-items-with-description">
-                                        <li>
-                                            <i class="fa-solid fa-gear"></i>
-                                            <a href="{{ route('estados') }}">
-                                                <div class="item-title">
-                                                    <h3>Administar Estados</h3>
-                                                    <p>Gestiona los Estados</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-location-dot"></i>
-                                            <a href="{{ route('lugar') }}">
+                        @if (auth()->user()->idRol == 1)
+                            <li>
+                                <button>
+                                    <i class="fa-solid fa-sliders"></i>Administracion
+                                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1"
+                                        width="16">
+                                        <path
+                                            d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <div class="dropdown__wrapper">
+                                    <div class="dropdown">
+                                        <ul class="list-items-with-description">
+                                            <li>
+                                                <i class="fa-solid fa-gear"></i>
+                                                <a href="{{ route('estados') }}">
+                                                    <div class="item-title">
+                                                        <h3>Administar Estados</h3>
+                                                        <p>Gestiona los Estados</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-location-dot"></i>
+                                                <a href="{{ route('lugar') }}">
 
-                                            <div class="item-title">
-                                                <h3>Administrar Lugares</h3>
-                                                <p>Gestiona los Lugares Disponibles</p>
-                                            </div>
+                                                    <div class="item-title">
+                                                        <h3>Administrar Lugares</h3>
+                                                        <p>Gestiona los Lugares Disponibles</p>
+                                                    </div>
 
-                                            </a>
+                                                </a>
 
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-users"></i>
-                                            <div class="item-title">
-                                                <a href="{{ route('usuario') }}">
-                                                <h3>Administar Usuarios</h3>
-                                                <p>Gestiona los Usuarios Registrados</p>
-                                            </div>
-                                        </a>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-users"></i>
+                                                <div class="item-title">
+                                                    <a href="{{ route('usuario') }}">
+                                                        <h3>Administar Usuarios</h3>
+                                                        <p>Gestiona los Usuarios Registrados</p>
+                                                </div>
+                                                </a>
 
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-user-tag"></i>
-                                            <a href="{{ route('rol') }}">
-                                                <div class="item-title">
-                                                    <h3>Administrar Roles</h3>
-                                                    <p>Gestiona los Roles</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-list"></i>
-                                            <a href="{{ route('categoria') }}">
-                                                <div class="item-title">
-                                                    <h3>Administrar Categorias</h3>
-                                                    <p>Gestiona las Categorias Disponibles</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-house"></i>
-                                            <a href="{{ route('welcome') }}">
-                                                <div class="item-title">
-                                                    <h3>Home</h3>
-                                                    <p>Regresa a la Pagina Principal</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-user-tag"></i>
+                                                <a href="{{ route('rol') }}">
+                                                    <div class="item-title">
+                                                        <h3>Administrar Roles</h3>
+                                                        <p>Gestiona los Roles</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-list"></i>
+                                                <a href="{{ route('categoria') }}">
+                                                    <div class="item-title">
+                                                        <h3>Administrar Categorias</h3>
+                                                        <p>Gestiona las Categorias Disponibles</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-house"></i>
+                                                <a href="{{ route('welcome') }}">
+                                                    <div class="item-title">
+                                                        <h3>Home</h3>
+                                                        <p>Regresa a la Pagina Principal</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
                         @endif
                         <li>
                             <button>
@@ -177,7 +180,7 @@
         <div class="main">
             <div class="content">
                 <div class="loader-container">
-                <svg style="left: 50%;
+                    <svg style="left: 50%;
                     top: 50%;
             position: absolute;
             transform: translate(-50%, -50%) matrix(1, 0, 0, 1, 0, 0);"
@@ -196,9 +199,9 @@
             </div>
         </div>
         <section>
-        <img src="images/srtcr.png">
-        <p class="copyright">&copy Copyright DestinosCR - 2024</p>
-    </section>
+            <img src="images/srtcr.png">
+            <p class="copyright">&copy Copyright DestinosCR - 2024</p>
+        </section>
     </div>
 
 
@@ -264,5 +267,6 @@
         }, 1500);
     });
 </script>
+
 
 </html>

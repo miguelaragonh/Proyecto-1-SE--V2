@@ -83,11 +83,25 @@
 
             });
         </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+            integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+            integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        @if (Session::has('message'))
+            <script>
+                toastr.options = {
+                    "timeOut": 5000,
+                };
+                toastr.success("{{ Session::get('message') }}");
+            </script>
+        @endif
     @endsection
 @endif
 @section('modal-title', 'Formulario de Estados')
 @section('modal-tbody')
-    <form id="formulario-editar" class="form text-center" method="POST"  action=" {{route('crearEstado') }}">
+    <form id="formulario-editar" class="form text-center" method="POST" action=" {{ route('crearEstado') }}">
         @csrf
         <!-- Agrega un campo oculto para almacenar el ID del registro -->
         <input type="hidden" id="id" name="id">
@@ -104,6 +118,9 @@
         <button type="submit" class="btn btn-primary">Guardar cambios</button>
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
     </form>
+
+
+
 
     <style>
         .form {

@@ -15,7 +15,7 @@ class CategoriasController extends Controller
     {
         $estados = Estado::all();
         $categorias = Categoria::with('estado')->get();
-        return view('admin.categorias', compact('estados','categorias'));
+        return view('admin.categorias', compact('estados', 'categorias'));
     }
 
 
@@ -29,7 +29,7 @@ class CategoriasController extends Controller
         $categoria->descripcion = $request->descripcion;
         $categoria->idEstado = $request->idEstado;
         $categoria->save();
-        return redirect()->route('categoria');
+        return redirect()->route('categoria')->with('message', 'La categoria se agrego correctamente..');
     }
 
 
@@ -38,12 +38,12 @@ class CategoriasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $categoria =Categoria::find($id);
+        $categoria = Categoria::find($id);
         $categoria->nombre = $request->nombre;
         $categoria->descripcion = $request->descripcion;
         $categoria->idEstado = $request->idEstado;
         $categoria->save();
-        return redirect()->route('categoria');
+        return redirect()->route('categoria')->with('message', 'La categoria ' . $categoria->nombre . ' se actualizo correctamente..');;
     }
 
     /**
@@ -51,8 +51,12 @@ class CategoriasController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        $categoria->delete();
-        return redirect()->route('categoria');
+        try {
+            $categoria->delete();
 
+            return redirect()->route('categoria')->with('message', 'La categoría se elimino correctamente.');
+        } catch (\Exception $e) {
+            return redirect()->route('categoria')->with('message', 'Error al eliminar la categoría existen lugares asociados' );
+        }
     }
 }

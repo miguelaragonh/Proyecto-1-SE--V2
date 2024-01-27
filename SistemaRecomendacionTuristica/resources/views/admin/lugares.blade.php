@@ -26,13 +26,14 @@
     @endsection
     @section('tbody')
         @foreach ($lugares as $lugar)
-                <tr>
+            <tr>
                 <td>{{ $lugar->id }} </td>
                 <td>{{ $lugar->nombre }} </td>
                 <td>{{ $lugar->descripcion }} </td>
                 <td>{{ $lugar->ubicacion }} </td>
-                <td >
-                    <img style="border-radius: 10px; overflow: hidden;" src="{{ asset($lugar->imagen) }}" alt="Imagen del lugar">
+                <td>
+                    <img style="border-radius: 10px; overflow: hidden;" src="{{ asset($lugar->imagen) }}"
+                        alt="Imagen del lugar">
                 </td>
                 <td>{{ $lugar->estado->nombre }}</td>
                 <td>{{ $lugar->categoria->nombre }}</td>
@@ -40,14 +41,9 @@
                 <td>
                     <div class="d-flex ">
                         <a href="" class="editar-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                            data-id="{{ $lugar->id }}"
-                            data-nombre="{{ $lugar->nombre }}"
-                            data-descripcion="{{ $lugar->descripcion }}"
-                            data-ubicacion="{{ $lugar->ubicacion }}"
-                            data-idestado="{{ $lugar->idEstado }}"
-                            data-idcategoria="{{ $lugar->idCategoria }}"
-
-                            >
+                            data-id="{{ $lugar->id }}" data-nombre="{{ $lugar->nombre }}"
+                            data-descripcion="{{ $lugar->descripcion }}" data-ubicacion="{{ $lugar->ubicacion }}"
+                            data-idestado="{{ $lugar->idEstado }}" data-idcategoria="{{ $lugar->idCategoria }}">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
 
@@ -61,7 +57,7 @@
                         </form>
                     </div>
                 </td>
-                </tr>
+            </tr>
         @endforeach
 
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -114,6 +110,21 @@
 
             });
         </script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+            integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+            integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        @if (Session::has('message'))
+            <script>
+                toastr.options = {
+                    "timeOut": 5000,
+                };
+                toastr.success("{{ Session::get('message') }}");
+            </script>
+        @endif
     @endsection
 @endif
 @section('modal-title', 'Formulario de lugares')
@@ -158,8 +169,7 @@
         </label>
 
         <label>
-            <input class="input" type="file" id="imagen" name="imagen" placeholder=""
-                accept="image/*">
+            <input class="input" type="file" id="imagen" name="imagen" placeholder="" accept="image/*">
         </label>
         <!-- Otros campos del formulario -->
         <button type="submit" class="btn btn-primary">Guardar cambios</button>

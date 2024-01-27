@@ -25,7 +25,7 @@ class EstadosController extends Controller
         $estado->nombre = $request->nombre;
         $estado->descripcion = $request->descripcion;
         $estado->save();
-        return redirect()->route('estados');
+        return redirect()->route('estados')->with('message','Estado se agrego correctamente..');
     }
 
 
@@ -40,7 +40,7 @@ class EstadosController extends Controller
         $estado->nombre = $request->nombre;
         $estado->descripcion = $request->descripcion;
         $estado->save();
-        return redirect()->route('estados');
+        return redirect()->route('estados')->with('message','Estado '.$estado->nombre.' actualizado correctamente correctamente..');;
 
     }
 
@@ -50,6 +50,6 @@ class EstadosController extends Controller
     public function destroy(Estado $estado)
     {
         $estado->delete();
-        return redirect()->route('estados');
+        return redirect()->route('estados')->with('message','Estado se elimino correctamente..');
     }
 }
