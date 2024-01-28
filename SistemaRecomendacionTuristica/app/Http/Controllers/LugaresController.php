@@ -4,30 +4,43 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Estado;
+use App\Models\Historial;
 use App\Models\Lugar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Monolog\Handler\IFTTTHandler;
 
 class LugaresController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+
+
+    public function lugares(Request $request)
     {
-        $estados = Estado::all();
-        $categorias = Categoria::all();
-        $lugares = Lugar::with('estado', 'categoria')->get();
-       //var_dump($lugares->imagen);
+        $nombre = $request->input('text');
 
-        return view('admin.lugares', compact('estados', 'categorias', 'lugares'));
-    }
+        if ($nombre == null) {
+            $lugares = Lugar::with('estado', 'categoria')->get();
+            return view('welcome', compact('lugares'));
+        } else {
+            $query = Lugar::with('estado', 'categoria');
+            $query->where('nombre', 'like', '%' . $nombre . '%');
+            $lugares = $query->get();
+            if ($query->count() > 0) {
+                $historial = new Historial();
+                $historial->idUsuario =auth()->user()->id;
+                $historial->idLugar = $query->first()->id;
+                $historial->idCategoria = $query->first()->idCategoria;
+                $historial->fecha= now();
+                $historial->save();
+            }
 
-
-    public function lugares()
-    {
-        $lugares = Lugar::with('estado', 'categoria')->get();
-        return view('welcome', compact('lugares'));
+            return view('welcome', compact('lugares'))->render();
+        }
     }
 
     /**
@@ -52,7 +65,8 @@ class LugaresController extends Controller
         return redirect()->route('lugar');
     }
 
-    public function guardarImg(Request $request){
+    public function guardarImg(Request $request)
+    {
         if ($request->isMethod('POST')) {
             $file = $request->file('imagen');
             $filename = date('YmdHi') . $request->input('name');
@@ -82,7 +96,6 @@ class LugaresController extends Controller
             $lugar->imagen = $this->guardarImg($request);
         } else {
             $lugar->imagen = $lugar->imagen;
-
         }
         $lugar->save();
         return redirect()->route('lugar');

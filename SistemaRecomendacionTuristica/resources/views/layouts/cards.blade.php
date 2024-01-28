@@ -25,7 +25,7 @@
                 likeButton.classList.toggle("card__btn--like");
             });
         });
-    
+
     document.getElementById('search-toggle').addEventListener('click', function() {
     var button = document.getElementById('search-toggle');
     var searchBar = document.getElementById('searchBar');
