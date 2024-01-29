@@ -9,30 +9,39 @@
 @if ($lugares->isEmpty())
         <h3 id='nodatos'>No se encontraron registros</h3>
 @else
-
-    @foreach ($lugares as $lugar)
-        <div class="container py-4">
-            <article class="postcard light blue">
-                <div class="postcard__img_link">
-                    <img class="postcard__img" src="{{ asset($lugar->imagen) }}" alt="Image Title" />
-                </div>
-                <div class="postcard__text">
-                    <h1 class="postcard__title"><a href="#">{{ $lugar->nombre }}</a></h1>
-                    <div class="postcard__subtitle small">
-                        {{ $lugar->ubicacion }} / {{ $lugar->categoria->nombre }}
-                    </div>
-                    <div class="postcard__bar"></div>
-                    <div class="postcard__preview-txt">{{ $lugar->descripcion }}</div>
-                    <ul class="postcard__tagbox">
-                        <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-                        <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-                        <li class="tag__item">
-                            <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-                        </li>
-                    </ul>
-                </div>
-            </article>
+    @foreach($lugares as $lugar)
+        <div class="card">
+          <div class="card__image-container">
+            <img
+              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"
+            />
+          </div>
+          <div class="card__content" id="content">
+            <p class="card__title text--medium" id="title-text">
+              {{$lugar->nombre}}
+            </p>
+            <div class="card__info" id="location-text">
+              <p class="text--medium">{{$lugar->ubicacion}} / {{ $lugar->categoria->nombre }}</p>
+              <p class="card__price text--medium" id="button-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                data-descripcion="{{ $lugar->descripcion }}">Descripcion</p>
+            </div>
+          </div>
         </div>
     @endforeach
     @endif
 @endsection
+@section('modal-title','Informacion del Lugar')
+@section('modal-tbody')
+    <p id="Descripcion"></p>
+@endsection
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#button-info').click(function(e) {
+     e.preventDefault();
+        var descripcion = $(this).data('descripcion');
+        $('#Descripcion').text(descripcion);
+        $('#modal').modal('show');
+      });
+ });
+</script>
