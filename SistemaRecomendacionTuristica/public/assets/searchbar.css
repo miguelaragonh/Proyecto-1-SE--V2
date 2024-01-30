@@ -11,6 +11,7 @@ form{
 }
 
 .input[type = "text"] {
+  
     right: -100%;
     margin-top: 1%;
     margin-left: 1.2%;
