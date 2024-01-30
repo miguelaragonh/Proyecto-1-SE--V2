@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home',[LugaresController::class,'lugares'])->name('welcome');
     Route::post('/home',[LugaresController::class,'index'])->name('filter');
     Route::get('/profile', [UsuarioController::class,'profile'])->name('profile');
-    Route::put('/profile/cambiar/contraseña/{id}',[UsuarioController::class,'changePassword'])->name('cambioPass');
+    Route::put('/profile/cambiar/contrasena/{id}',[UsuarioController::class,'changePassword'])->name('cambioPass');
     Route::post('/profile/editar/{id}',[UsuarioController::class,'update'])->name('editarUsuario2');
     Route::get('/favorites', function () {return view('favorites');})->name('favorites');
     Route::get('/error', function () {return view('error');})->name('error');

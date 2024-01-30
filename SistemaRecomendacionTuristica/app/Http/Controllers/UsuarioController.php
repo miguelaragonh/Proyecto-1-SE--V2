@@ -92,7 +92,7 @@ class UsuarioController extends Controller
                 $usuario->img = $usuario->img;
             }
             $usuario->save();
-            return redirect()->back()->with('message', 'Usuario '. $usuario->name.' actualizado correctamente correctamente..');
+            return redirect()->back()->with('message', 'Usuario '. $usuario->name.' actualizado correctamente..');
         } catch (\Illuminate\Database\QueryException $e) {
 
             $errorCode = $e->errorInfo[1];
@@ -115,27 +115,17 @@ class UsuarioController extends Controller
 
     public function changePassword(Request $request, string $id)
     {
-        try {
-            $usuario = User::find($id);
-            $usuario->name = $request->name;
-            $usuario->lastname = $request->lastname;
-            $usuario->email = $request->email;
-            $usuario->idEstado =  $request->idEstado;
-            $usuario->idRol = ($request->idRol) ? $request->idRol : 2;
+        $usuario = User::find($id);
+        $input = $request->all();
 
-            if ($request->hasFile('img') && $request->file('img')->isValid()) {
-                $usuario->img = $this->guardarImg($request);
-            } else {
-                $usuario->img = $usuario->img;
-            }
+        if (Hash::check($input['contrasenaActual'], $usuario->password) && !Hash::check($input['contrasenaNueva'], $usuario->password)) {
+            $usuario->password = Hash::make($input['contrasenaNueva']);
             $usuario->save();
-            return redirect()->route('usuario');
-        } catch (\Illuminate\Database\QueryException $e) {
 
-            $errorCode = $e->errorInfo[1];
-            if ($errorCode == 1062) {
-                return redirect()->route('error2');
-            }
+            return redirect()->back()->with('message', 'Contraseña de '.$usuario->name.' fue cambiada correctamente');;
+
+        } else {
+            return redirect()->back()->with('error', 'Contraseña Actual erronea');;
         }
     }
 

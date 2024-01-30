@@ -118,9 +118,9 @@
 
                 </form>
 
-                <form action="{{ route('editarUsuario2', auth()->user()->id) }}" method="POST">
+                <form action="{{ route('cambioPass', auth()->user()->id) }}" method="post">
                     @csrf
-
+                    @method('put')
 
                     <div class="card-body">
                         <div class="row gutters">
@@ -130,14 +130,15 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="fullName">Contraseña Actual</label>
-                                    <input type="text" id="contrasenaActual" placeholder="**************" readonly>
+                                    <input type="text" name='contrasenaActual' id="contrasenaActual"
+                                        placeholder="**************" readonly>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="email">Contraseña Nueva</label>
-                                    <input type="text" id="contrasenaNueva" placeholder="**************"
-                                        oninput="validarPassword()" readonly>
+                                    <input type="text" name="contrasenaNueva" id="contrasenaNueva"
+                                        placeholder="**************" oninput="validarPassword()" readonly>
                                     <!-- Muestra el mensaje de error para la contraseña -->
                                     <p class="error-message" id="error-contrasenaNueva"></p>
                                 </div>
@@ -192,6 +193,13 @@
                 "timeOut": 5000,
             };
             toastr.success("{{ Session::get('message') }}");
+        </script>
+    @elseif(Session::has('error'))
+        <script>
+            toastr.options = {
+                "timeOut": 5000,
+            };
+            toastr.error("{{ Session::get('error') }}");
         </script>
     @endif
     <script>
