@@ -7,10 +7,12 @@ use App\Models\Estado;
 use App\Models\Historial;
 use App\Models\Lugar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Monolog\Handler\IFTTTHandler;
+use Symfony\Component\VarDumper\VarDumper;
 
 class LugaresController extends Controller
 {
@@ -32,12 +34,40 @@ class LugaresController extends Controller
         $usuario = auth()->user();
         $nombre = $request->input('text');
         $preferencia = $usuario->preferencia;
+        $historial = $this->conteoHistorial($usuario);
+        $categoriaMasBuscada=array_search(max($historial), $historial);
         if ($preferencia != null) {
             $lugares = Lugar::with('estado', 'categoria')->orderByDesc(DB::raw("idCategoria = '{$preferencia}'"))->get();
-        } else {
+            var_dump(max($historial));
+        }
+        elseif ($categoriaMasBuscada==3) {
+            $lugares = Lugar::with('estado', 'categoria')
+            ->orderByDesc(DB::raw("idCategoria = '{$categoriaMasBuscada}'"))->get();
+        }elseif ($categoriaMasBuscada==4) {
+            $lugares = Lugar::with('estado', 'categoria')
+            ->orderByDesc(DB::raw("idCategoria = '{$categoriaMasBuscada}'"))->get();
+        }elseif ($categoriaMasBuscada==5) {
+            $lugares = Lugar::with('estado', 'categoria')
+            ->orderByDesc(DB::raw("idCategoria = '{$categoriaMasBuscada}'"))->get();
+        }
+        else {
             $lugares = Lugar::with('estado', 'categoria')->get();
         }
-        return view('welcome', compact('lugares'));
+        return view('welcome', compact('lugares','categoriaMasBuscada'));
+    }
+
+
+    public function conteoHistorial($usuario)
+    {
+        $categorias = Categoria::all();
+        $historial = array();
+        foreach ($categorias as $categoria) {
+            $historial[$categoria->id] =
+                Historial::where('idUsuario', $usuario->id)
+                    ->where('idCategoria', $categoria->id)
+                    ->count();
+        }
+        return $historial;
     }
 
 
@@ -48,7 +78,7 @@ class LugaresController extends Controller
             $query = Lugar::with('estado', 'categoria');
             $query->where('nombre', 'like', '%' . $nombre . '%');
             $lugares = $query->get();
-            $this->nuevoHIstorial($query);
+            $this->nuevoHistorial($query);
             return view('welcome', compact('lugares'));
         } else {
             $lugares = Lugar::with('estado', 'categoria')->get();
@@ -56,7 +86,7 @@ class LugaresController extends Controller
         }
     }
 
-    public function nuevoHIstorial($query)
+    public function nuevoHistorial($query)
     {
         if ($query->count() > 0) {
             $historial = new Historial();
