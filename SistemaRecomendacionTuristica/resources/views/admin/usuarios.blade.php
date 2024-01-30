@@ -143,6 +143,13 @@
                 };
                 toastr.success("{{ Session::get('message') }}");
             </script>
+        @elseif(Session::has('error'))
+            <script>
+                toastr.options = {
+                    "timeOut": 5000,
+                };
+                toastr.error("{{ Session::get('error') }}");
+            </script>
         @endif
     @endsection
 @endif

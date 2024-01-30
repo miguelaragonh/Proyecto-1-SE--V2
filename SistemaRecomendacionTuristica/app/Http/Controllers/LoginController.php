@@ -21,10 +21,10 @@ class LoginController extends Controller
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->idEstado = 1;
-        $usuario->idRol = ($request->idRol)?$request->idRol:2;
+        $usuario->idRol = ($request->idRol) ? $request->idRol : 2;
         $usuario->save();
         Auth::login($usuario);
-        return redirect()->route('welcome');
+        return redirect()->route('welcome')->with('message', 'Bienvenido ' . auth()->user()->name . ' a Destinos CR');
     }
 
     public function login(Request $request)
@@ -33,13 +33,13 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
-       $remember = ($request->has('remember')) ? true : false;
+        $remember = ($request->has('remember')) ? true : false;
 
-        if (Auth::attempt($datos,$remember)) {
+        if (Auth::attempt($datos, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('welcome'));
+            return redirect()->intended(route('welcome'))->with('message', 'Bienvenido ' . auth()->user()->name . ' a Destinos CR');
         } else {
-            return redirect()->route('login');
+            return redirect()->route('login')->with('message', 'Datos Erroneos, verifiquelos e intente nuevamente');
         }
     }
     public function logout(Request $request)

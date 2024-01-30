@@ -32,8 +32,14 @@
                 <td>{{ $lugar->descripcion }} </td>
                 <td>{{ $lugar->ubicacion }} </td>
                 <td>
-                    <img style="border-radius: 10px; overflow: hidden;" src="{{ asset($lugar->imagen) }}"
-                        alt="Imagen del lugar">
+
+                    @if ($lugar->imagen)
+                        <img style="border-radius: 10px; overflow: hidden;" src="{{ asset($lugar->imagen) }}"
+                            alt="Imagen del lugar">
+                    @else
+                        <img src="{{ asset('images/dfl.jpg') }}" />
+                    @endif
+
                 </td>
                 <td>{{ $lugar->estado->nombre }}</td>
                 <td>{{ $lugar->categoria->nombre }}</td>

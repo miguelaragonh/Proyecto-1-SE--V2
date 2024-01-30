@@ -17,6 +17,13 @@ class LugaresController extends Controller
      * Display a listing of the resource.
      */
 
+    public function index()
+    {
+        $estados = Estado::all();
+        $categorias = Categoria::all();
+        $lugares = Lugar::with('estado', 'categoria')->get();
+        return view('admin.lugares', compact('estados', 'categorias', 'lugares'));
+    }
 
 
     public function lugares(Request $request)
@@ -32,10 +39,10 @@ class LugaresController extends Controller
             $lugares = $query->get();
             if ($query->count() > 0) {
                 $historial = new Historial();
-                $historial->idUsuario =auth()->user()->id;
+                $historial->idUsuario = auth()->user()->id;
                 $historial->idLugar = $query->first()->id;
                 $historial->idCategoria = $query->first()->idCategoria;
-                $historial->fecha= now();
+                $historial->fecha = now();
                 $historial->save();
             }
 
@@ -60,9 +67,13 @@ class LugaresController extends Controller
         $lugar->ubicacion = $request->ubicacion;
         $lugar->idEstado = $request->idEstado;
         $lugar->idCategoria = $request->idCategoria;
-        $lugar->imagen = $this->guardarImg($request);
+        if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
+            $lugar->imagen = $this->guardarImg($request);
+        } else {
+            $lugar->imagen = null;
+        }
         $lugar->save();
-        return redirect()->route('lugar');
+        return redirect()->route('lugar')->with('message', 'Lugar se agrego correctamente..');
     }
 
     public function guardarImg(Request $request)
@@ -98,7 +109,7 @@ class LugaresController extends Controller
             $lugar->imagen = $lugar->imagen;
         }
         $lugar->save();
-        return redirect()->route('lugar');
+        return redirect()->route('lugar')->with('message', 'Lugar ' . $lugar->nombre . ' actualizado correctamente correctamente..');
     }
 
     /**
@@ -107,6 +118,6 @@ class LugaresController extends Controller
     public function destroy(Lugar $lugar)
     {
         $lugar->delete();
-        return redirect()->route('lugar');
+        return redirect()->route('lugar')->with('message', 'Lugar se elimino correctamente..');
     }
 }

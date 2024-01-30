@@ -99,6 +99,7 @@
 
                 function mostrarError(elemento, mensaje) {
                     const errorElemento = document.getElementById(`error-${elemento.id}`);
+                    
                     if (mensaje) {
                         errorElemento.innerText = mensaje;
                         elemento.classList.add("error");
@@ -123,7 +124,7 @@
                     const valor = apellidos.value.trim();
                     const contieneNumeros = /[0-9]/.test(valor); // Verifica si el valor contiene algún número
                     const mensajeError = (valor.length === 0) ? "El nombre es requerido." :
-                    (valor.length < 3 || valor.length > 15 || contieneNumeros ) ?
+                        (valor.length < 3 || valor.length > 15 || contieneNumeros) ?
                         "Los apellidos deben tener de 3 a 15 caracteres y no puede ser numérico." : null;
                     mostrarError(apellidos, mensajeError);
                     actualizarEstadoBoton();
@@ -152,6 +153,9 @@
                     submitBtn.classList.toggle("enabled", habilitarBoton);
                 }
             </script>
+
+
+
             <!-- Registro -->
             <!-- Inicio Sesion -->
             <div class="col align-items-center flex-col sign-in">
@@ -169,7 +173,7 @@
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="remember" value=""
-                                    id="form2Example33"  />
+                                    id="form2Example33" />
                                 <label class="form-check-label" for="form2Example33">
                                     Recuerdame
                                 </label>
@@ -220,7 +224,20 @@
 
     </style>
 
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @if (Session::has('message'))
+        <script>
+            toastr.options = {
+                "timeOut": 5000,
+            };
+            toastr.success("{{ Session::get('message') }}");
+        </script>
+    @endif
     <script>
         let container = document.getElementById('container')
         toggle = () => {

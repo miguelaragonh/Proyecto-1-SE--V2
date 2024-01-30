@@ -29,7 +29,7 @@ class RolesController extends Controller
         $rol->descripcion = $request->descripcion;
         $rol->idEstado = $request->idEstado;
         $rol->save();
-        return redirect()->route('rol');
+        return redirect()->route('rol')->with('message', 'Rol se agrego correctamente..');
     }
 
 
@@ -42,7 +42,7 @@ class RolesController extends Controller
         $rol->descripcion = $request->descripcion;
         $rol->idEstado = $request->idEstado;
         $rol->save();
-        return redirect()->route('rol');
+        return redirect()->route('rol')->with('message', 'Rol ' . $rol->nombre . ' actualizado correctamente correctamente..');
     }
 
     /**
@@ -51,6 +51,6 @@ class RolesController extends Controller
     public function destroy(Rol $rol)
     {
         $rol->delete();
-        return redirect()->route('rol');
+        return redirect()->route('rol')->with('message', 'Rol se elimino correctamente..');
     }
 }
