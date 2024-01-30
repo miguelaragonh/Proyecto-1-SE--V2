@@ -2,7 +2,6 @@
     display: flex;
     flex-wrap: wrap;
     height: fit-content;
-    margin-bottom: 0.5%;
 }
 
 form{
@@ -12,12 +11,13 @@ form{
 }
 
 .input[type = "text"] {
+  
     right: -100%;
     margin-top: 1%;
     margin-left: 1.2%;
     display: none;
     color: black;
-    background: linear-gradient(142.99deg, rgba(201, 201, 201, 0.63) 15.53%, rgba(243, 243, 243, 0.63) 88.19%);
+    background: white;
     box-shadow: rgba(0, 0, 0, 0.419) 0px 2px 6px;
     border: none;
     border-radius: 50px;

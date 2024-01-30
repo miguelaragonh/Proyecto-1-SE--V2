@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 :root {
     --primary: #000000;
-    --background: #FAFAFA;
-    --secondary-background: #F2F2F2;
+    --background: #ffffff;
+    --secondary-background: #eae8e8;
     --gray: #847F90;
     --gray-hover: #171717;
     --primary-hover: #555555;
@@ -21,6 +21,7 @@ body {
 }
 
 * {
+    
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -80,7 +81,7 @@ img{
     list-style-type: none;
     align-items: center;
     gap: 16px;
-    background-color: var(--background);
+    background-color: white;
 }
 
 .navigation>li {

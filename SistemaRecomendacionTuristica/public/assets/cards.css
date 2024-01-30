@@ -16,11 +16,13 @@ body {
   }
 
   .cards-container {
+    
+    margin-left: 4%;
     margin-top: 2%;
     margin-bottom: 2%;
     display: grid;
     grid-template-columns: 1fr repeat(12, minmax(auto, 60px)) 1fr;
-    grid-gap: 40px;
+    grid-gap: 45px;
   }
   
   .text--medium {
@@ -33,10 +35,11 @@ body {
     grid-column: 2 / span 12;
     display: grid;
     grid-template-columns: repeat(12, minmax(auto, 60px));
-    grid-gap: 60px;
+    grid-gap: 40px;
   }
   
   .card {
+    border: none;
     grid-column-end: span 4;
     display: flex;
     flex-direction: column;
@@ -44,6 +47,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease 0s;
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.274) 0px 2px 6px;
   }
   
   .card:hover {
@@ -85,12 +89,12 @@ body {
   .card__price {
     margin-left: auto;
     padding: 5px 20px;
-    background-color: #0544e3;
+    background-color: #000000;
     color: rgb(255, 255, 255);
     border-radius: 20px;
     cursor: pointer;
   }
-  
+
 @media only screen and (max-width: 1000px) {
   .card {
     grid-column-end: span 6;
