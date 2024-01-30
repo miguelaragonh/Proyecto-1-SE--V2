@@ -1,6 +1,7 @@
 @extends('layouts.cards')
 @section('search-bar')
-    <form method="get" action=" {{ route('welcome') }}" class="input">
+    <form method="post" action=" {{ route('buscar') }}" class="input">
+        @csrf
         <input type="text" name="text" placeholder="Buscar" id="searchBar" oninput="filterLugares()" class="input">
     </form>
 @endsection

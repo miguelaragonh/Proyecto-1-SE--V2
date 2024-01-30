@@ -28,7 +28,7 @@ Route::post('/iniciar', [LoginController::class, 'login'])->name('iniciarSesion'
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/home',[LugaresController::class,'lugares'])->name('welcome');
-    Route::post('/home',[LugaresController::class,'index'])->name('filter');
+    Route::post('/home/buscar',[LugaresController::class,'buscarLugar'])->name('buscar');
     Route::get('/profile', [UsuarioController::class,'profile'])->name('profile');
     Route::put('/profile/cambiar/contrasena/{id}',[UsuarioController::class,'changePassword'])->name('cambioPass');
     Route::post('/profile/editar/{id}',[UsuarioController::class,'update'])->name('editarUsuario2');

@@ -84,6 +84,7 @@
                                     <label for="preferencias">Preferencias</label>
                                     <select name="preferencia" id="user-preferences" disabled>
                                         @if (auth()->user()->preferencia != null)
+                                        <option value="0" >No definido</option>
                                             @foreach ($categorias as $categ)
                                                 @if ($categ->id == auth()->user()->preferencia)
                                                     <option value="{{ $categ->id }}" selected>{{ $categ->nombre }}

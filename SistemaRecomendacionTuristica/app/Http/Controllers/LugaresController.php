@@ -8,6 +8,7 @@ use App\Models\Historial;
 use App\Models\Lugar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Monolog\Handler\IFTTTHandler;
 
@@ -28,25 +29,42 @@ class LugaresController extends Controller
 
     public function lugares(Request $request)
     {
+        $usuario = auth()->user();
         $nombre = $request->input('text');
-
-        if ($nombre == null) {
-            $lugares = Lugar::with('estado', 'categoria')->get();
-            return view('welcome', compact('lugares'));
+        $preferencia = $usuario->preferencia;
+        if ($preferencia != null) {
+            $lugares = Lugar::with('estado', 'categoria')->orderByDesc(DB::raw("idCategoria = '{$preferencia}'"))->get();
         } else {
+            $lugares = Lugar::with('estado', 'categoria')->get();
+        }
+        return view('welcome', compact('lugares'));
+    }
+
+
+    public function buscarLugar(Request $request)
+    {
+        $nombre = $request->input('text');
+        if ($nombre != null) {
             $query = Lugar::with('estado', 'categoria');
             $query->where('nombre', 'like', '%' . $nombre . '%');
             $lugares = $query->get();
-            if ($query->count() > 0) {
-                $historial = new Historial();
-                $historial->idUsuario = auth()->user()->id;
-                $historial->idLugar = $query->first()->id;
-                $historial->idCategoria = $query->first()->idCategoria;
-                $historial->fecha = now();
-                $historial->save();
-            }
+            $this->nuevoHIstorial($query);
+            return view('welcome', compact('lugares'));
+        } else {
+            $lugares = Lugar::with('estado', 'categoria')->get();
+            return view('welcome', compact('lugares'));
+        }
+    }
 
-            return view('welcome', compact('lugares'))->render();
+    public function nuevoHIstorial($query)
+    {
+        if ($query->count() > 0) {
+            $historial = new Historial();
+            $historial->idUsuario = auth()->user()->id;
+            $historial->idLugar = $query->first()->id;
+            $historial->idCategoria = $query->first()->idCategoria;
+            $historial->fecha = now();
+            $historial->save();
         }
     }
 
