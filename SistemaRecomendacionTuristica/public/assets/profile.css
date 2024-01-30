@@ -21,6 +21,15 @@ body {
     font-size: 14px;
 }
 
+.error-message {
+    color: red;
+}
+
+.error {
+    border: 1px solid red;
+}
+
+
 .wrapper{
     background-color: var(--background);
 }

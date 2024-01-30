@@ -40,7 +40,7 @@ class EstadosController extends Controller
         $estado->nombre = $request->nombre;
         $estado->descripcion = $request->descripcion;
         $estado->save();
-        return redirect()->route('estados')->with('message','Estado '.$estado->nombre.' actualizado correctamente correctamente..');;
+        return redirect()->route('estados')->with('message','Estado '.$estado->nombre.' actualizado correctamente correctamente..');
 
     }
 
