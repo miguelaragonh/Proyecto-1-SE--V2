@@ -15,6 +15,10 @@ body {
     border-top-left-radius: 20px;
   }
 
+  .card__content a{
+    text-decoration: none;
+  }
+
   .cards-container {
     
     margin-left: 4%;
@@ -86,9 +90,16 @@ body {
     align-items: center;
     outline: none;
   }
+
   .card__info button {
     outline: none;
     border: none;
+  }
+
+  .card__info .button-ub {
+    outline: none;
+    border: none;
+    background: none;
   }
   
   .card__price {
