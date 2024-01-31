@@ -30,7 +30,7 @@ class LugaresController extends Controller
 
 
     public function lugares(Request $request)
-    {   
+    {
         $usuario = auth()->user();
         $nombre = $request->input('text');
         $preferencia = $usuario->preferencia;
@@ -61,6 +61,7 @@ class LugaresController extends Controller
     {
         $categorias = Categoria::all();
         $historial = array();
+        $historial[0]=0;
         foreach ($categorias as $categoria) {
             $historial[$categoria->id] =
                 Historial::where('idUsuario', $usuario->id)
