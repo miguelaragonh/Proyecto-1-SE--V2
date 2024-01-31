@@ -2,28 +2,16 @@
 @section('lugares')
     @if ($lugares->isEmpty())
         @section('error')
-            <div class="notFound">
-                <div class="moon"></div>
-                <div class="moon_crater moon_crater1"></div>
-                <div class="moon_crater moon_crater2"></div>
-                <div class="moon_crater moon_crater3"></div>
-
-                <div class="star star1"></div>
-                <div class="star star2"></div>
-                <div class="star star3"></div>
-                <div class="star star4"></div>
-                <div class="star star5"></div>
-
-                <div class="error">
-                    <div class="error__title">404</div>
-                    <div class="error__subtitle">Hmmm...</div>
-                    <div class="error__description">El Contenido solicitado no se encuentra disponile</div>
-                    <a href="{{ route('welcome') }}">
-                        <button class="error_button error_button--active">Home</button>
-                    </a>
-                </div>
-            </div>
-            </div>
+        <h1>Lo Sentimos!</h1>
+            <p class="zoom-area"><b>El contenido solicitado no esta disponible</p>
+            <section class="error-container">
+            <span class="four"><span class="screen-reader-text">4</span></span>
+            <span class="zero"><span class="screen-reader-text">0</span></span>
+            <span class="four"><span class="screen-reader-text">4</span></span>
+            </section>
+            <div class="link-container">
+            <a href="{{route('welcome')}}" class="more-link">Volver</a>
+        </div>
         @endsection
     @else
         @section('search-bar')
@@ -52,7 +40,9 @@
                         {{ $lugar->nombre }}
                     </p>
                     <div class="card__info" id="location-text">
-                        <button class="text--medium button-ub" href="{{route('welcome')}}">{{ $lugar->ubicacion }} / {{ $lugar->categoria->nombre }}</button>
+                        <a href="#" target="_blank" rel="noopener">
+                            <button class="text--medium button-ub">{{ $lugar->ubicacion }} / {{ $lugar->categoria->nombre }}</button>
+                        </a>
                         <button class="card__price text--medium button-info" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop"
                             data-descripcion="{{ $lugar->descripcion }}">Descripcion</button>
@@ -103,6 +93,7 @@
                 var cards = document.querySelectorAll('.card');
                 var buttonInfos = document.querySelectorAll('.button-info');
                 var body = document.querySelectorAll(".wrapper")
+                var exit = document.querySelectorAll(".button-salir")
 
                 cards.forEach(function(card) {
                     card.style.color = '#005187';
@@ -124,6 +115,19 @@
 
                     buttonInfo.addEventListener('mouseout', function() {
                         buttonInfo.style.backgroundColor = '#4d82bc';
+                    });
+                });
+
+                exit.forEach(function(exit) {
+                    exit.style.color = 'white';
+                    exit.style.backgroundColor = '#4d82bc';
+
+                    exit.addEventListener('mouseover', function() {
+                        exit.style.backgroundColor = '#005187';
+                    });
+
+                    exit.addEventListener('mouseout', function() {
+                        exit.style.backgroundColor = '#4d82bc';
                     });
                 });
                 break;

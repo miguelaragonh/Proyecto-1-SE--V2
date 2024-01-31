@@ -5,8 +5,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
     <link rel="stylesheet" href="{{ asset('assets/profile.css') }}">
-
-
     <div class="container">
         <div class="row gutters">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -131,14 +129,14 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="fullName">Contraseña Actual</label>
-                                    <input type="text" name='contrasenaActual' id="contrasenaActual"
+                                    <input type="password" name='contrasenaActual' id="contrasenaActual"
                                         placeholder="**************" readonly>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="email">Contraseña Nueva</label>
-                                    <input type="text" name="contrasenaNueva" id="contrasenaNueva"
+                                    <input type="password" name="contrasenaNueva" id="contrasenaNueva"
                                         placeholder="**************" oninput="validarPassword()" readonly>
                                     <!-- Muestra el mensaje de error para la contraseña -->
                                     <p class="error-message" id="error-contrasenaNueva"></p>
@@ -148,7 +146,7 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="email">Confirmar Contraseña</label>
-                                    <input type="text" id="contrasenaNueva2" placeholder="**************"
+                                    <input type="password" id="contrasenaNueva2" placeholder="**************"
                                         oninput="validarPassword2()" readonly>
                                     <!-- Muestra el mensaje de error para la contraseña -->
                                     <p class="error-message" id="error-contrasenaNueva2"></p>
@@ -164,7 +162,7 @@
                                 </div>
                                 <div class="text-right">
                                     <button type="button" id="editar2" class="btn btn-dark"
-                                        onclick="updateInfo2()">Cambiar Contraseña</button>
+                                        onclick="updateInfo2()">Editar Contraseña</button>
                                 </div>
                             </div>
                         </div>
@@ -243,7 +241,7 @@
             var contrasenaNueva = document.getElementById("contrasenaNueva")
             var contrasenaNueva2 = document.getElementById("contrasenaNueva2")
             if (contrasenaActual.readOnly) {
-                contrasenaActual.readOnly = false
+                contrasenaActual.readOnly = true
                 contrasenaNueva.readOnly = false
                 contrasenaNueva2.readOnly = false
                 botonOcultar.hidden = false
