@@ -37,8 +37,8 @@ class LugaresController extends Controller
         $historial = $this->conteoHistorial($usuario);
         $categoriaMasBuscada=array_search(max($historial), $historial);
         if ($preferencia != null) {
-            $lugares = Lugar::with('estado', 'categoria')->orderByDesc(DB::raw("idCategoria = '{$preferencia}'"))->get();
-            var_dump(max($historial));
+            $lugares = Lugar::with('estado', 'categoria')
+            ->orderByDesc(DB::raw("idCategoria = '{$preferencia}'"))->get();
         }
         elseif ($categoriaMasBuscada==3) {
             $lugares = Lugar::with('estado', 'categoria')
@@ -53,7 +53,7 @@ class LugaresController extends Controller
         else {
             $lugares = Lugar::with('estado', 'categoria')->get();
         }
-        return view('welcome', compact('lugares','categoriaMasBuscada'));
+        return view('welcome', compact('lugares','categoriaMasBuscada','preferencia'));
     }
 
 
