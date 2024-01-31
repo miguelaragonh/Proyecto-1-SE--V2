@@ -3,7 +3,7 @@
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LugaresController;
+
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsuarioController;
 use App\Models\Rol;

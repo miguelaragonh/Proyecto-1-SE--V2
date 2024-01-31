@@ -9,10 +9,8 @@
 
 <body>
     <div class="wrapper">
-        <div class="search">
-            <button id="search-toggle"><i class="fa-solid fa-magnifying-glass"></i></button>
+            @yield('error')
             @yield('search-bar')
-        </div>
         <div class="cards-container">
             <section class="cards">
                 @yield('lugares')
@@ -41,7 +39,7 @@
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">@yield('modal-title')</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                @yield('cerrar_modal_cards')
             </div>
             <div class="modal-body d-flex align-items-center justify-content-center text-center">
                 @yield('modal-tbody')

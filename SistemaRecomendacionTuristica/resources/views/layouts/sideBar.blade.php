@@ -23,7 +23,7 @@
         <header class="menu__wrapper">
             <div class="menu__bar">
                 <a href="{{ route('welcome') }}" title="Home" aria-label="home" class="logo">
-                    <img src="images/srtcr.png" alt="">
+                <img src="{{ asset('images/srtcr.png') }}" />
                 </a>
                 <nav>
                     <ul class="navigation hide">
@@ -135,15 +135,6 @@
                                                 <div class="item-title">
                                                     <h3>Perfil</h3>
                                                     <p>Administra tu informacion</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-star"></i>
-                                            <a href="{{ route('favorites') }}">
-                                                <div class="item-title">
-                                                    <h3>Mis Favoritos</h3>
-                                                    <p>Mira los Lugares que te gustaron</p>
                                                 </div>
                                             </a>
                                         </li>

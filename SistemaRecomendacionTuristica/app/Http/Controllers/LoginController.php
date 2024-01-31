@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Login;
+use App\Http\Controllers\LugaresController;
 
-class LoginController extends Controller
+class LoginController extends LugaresController
 {
     /**
      * Show the form for creating a new resource.
@@ -37,7 +38,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($datos, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('welcome'))->with('message', 'Bienvenido ' . auth()->user()->name . ' a Destinos CR');
+            return redirect()->route('welcome')->with('message', 'Bienvenido ' . auth()->user()->name . ' a Destinos CR');
         } else {
             return redirect()->route('login')->with('message', 'Datos Erroneos, verifiquelos e intente nuevamente');
         }

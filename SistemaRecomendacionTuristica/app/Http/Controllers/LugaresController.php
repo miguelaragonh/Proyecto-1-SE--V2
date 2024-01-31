@@ -30,7 +30,7 @@ class LugaresController extends Controller
 
 
     public function lugares(Request $request)
-    {
+    {   
         $usuario = auth()->user();
         $nombre = $request->input('text');
         $preferencia = $usuario->preferencia;
@@ -74,15 +74,19 @@ class LugaresController extends Controller
     public function buscarLugar(Request $request)
     {
         $nombre = $request->input('text');
+        $usuario = auth()->user();
+        $preferencia = $usuario->preferencia;
+        $historial = $this->conteoHistorial($usuario);
+        $categoriaMasBuscada=array_search(max($historial), $historial);
         if ($nombre != null) {
             $query = Lugar::with('estado', 'categoria');
             $query->where('nombre', 'like', '%' . $nombre . '%');
             $lugares = $query->get();
             $this->nuevoHistorial($query);
-            return view('welcome', compact('lugares'));
+            return view('welcome', compact('lugares','categoriaMasBuscada','preferencia'));
         } else {
             $lugares = Lugar::with('estado', 'categoria')->get();
-            return view('welcome', compact('lugares'));
+            return view('welcome', compact('lugares','categoriaMasBuscada','preferencia'));
         }
     }
 

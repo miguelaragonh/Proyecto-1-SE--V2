@@ -50,7 +50,7 @@
                 <form action="{{ route('editarUsuario2', auth()->user()->id) }}" method="POST">
                     @csrf
                     <input type="hidden" id="idEstado" name="idEstado" value="{{ auth()->user()->idEstado }}">
-                    <input type="hidden" id="idRol" name="idRol" value="{{ auth()->user()->idEstado }}">
+                    <input type="hidden" id="idRol" name="idRol" value="{{ auth()->user()->idRol }}">
                     <div class="card-body">
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
