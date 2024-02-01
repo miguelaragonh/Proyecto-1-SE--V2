@@ -16,16 +16,22 @@ class LoginController extends LugaresController
      */
     public function register(Request $request)
     {
-        $usuario = new User();
-        $usuario->name = $request->name;
-        $usuario->lastname = $request->lastname;
-        $usuario->email = $request->email;
-        $usuario->password = Hash::make($request->password);
-        $usuario->idEstado = 1;
-        $usuario->idRol = ($request->idRol) ? $request->idRol : 2;
-        $usuario->save();
-        Auth::login($usuario);
-        return redirect()->route('welcome')->with('message', 'Bienvenido ' . auth()->user()->name . ' a Destinos CR');
+
+        try {
+            $usuario = new User();
+            $usuario->name = $request->name;
+            $usuario->lastname = $request->lastname;
+            $usuario->email = $request->email;
+            $usuario->password = Hash::make($request->password);
+            $usuario->idEstado = 1;
+            $usuario->idRol = ($request->idRol) ? $request->idRol : 2;
+            $usuario->save();
+            Auth::login($usuario);
+            return redirect()->route('welcome')->with('message', 'Bienvenido ' . auth()->user()->name . ' a Destinos CR');
+        } catch (\Exception $e) {
+            return redirect()->route('login')->with('error', 'El correo ingresado tiene usuario registrado' );
+        }
+
     }
 
     public function login(Request $request)
@@ -40,7 +46,7 @@ class LoginController extends LugaresController
             $request->session()->regenerate();
             return redirect()->route('welcome')->with('message', 'Bienvenido ' . auth()->user()->name . ' a Destinos CR');
         } else {
-            return redirect()->route('login')->with('message', 'Datos Erroneos, verifiquelos e intente nuevamente');
+            return redirect()->route('login')->with('error', 'Datos Erroneos, verifiquelos e intente nuevamente');
         }
     }
     public function logout(Request $request)

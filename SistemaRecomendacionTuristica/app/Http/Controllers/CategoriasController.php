@@ -56,7 +56,7 @@ class CategoriasController extends Controller
 
             return redirect()->route('categoria')->with('message', 'La categoría se elimino correctamente.');
         } catch (\Exception $e) {
-            return redirect()->route('categoria')->with('message', 'Error al eliminar la categoría existen lugares asociados' );
+            return redirect()->route('categoria')->with('error', 'Error al eliminar la categoría existen lugares asociados' );
         }
     }
 }

@@ -40,7 +40,7 @@
                         {{ $lugar->nombre }}
                     </p>
                     <div class="card__info" id="location-text">
-                        <a href="#" target="_blank" rel="noopener">
+                        <a href="{{ $lugar->gmap }} " target="_blank" rel="noopener">
                             <button class="text--medium button-ub">{{ $lugar->ubicacion }} / {{ $lugar->categoria->nombre }}</button>
                         </a>
                         <button class="card__price text--medium button-info" data-bs-toggle="modal"
@@ -174,7 +174,7 @@
                     body.style.background = 'rgb(94,99,121)';
                     body.style.background =
                         'linear-gradient(315deg, rgba(94,99,121,1) 0%, rgba(180,178,178,1) 53%, rgba(35,33,37,1) 100%)';
-                }); 
+                });
 
                 buttonInfos.forEach(function(buttonInfo) {
                     buttonInfo.style.color = 'black';

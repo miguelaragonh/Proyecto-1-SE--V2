@@ -18,6 +18,7 @@
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Ubicacion</th>
+            <th>Google Map</th>
             <th>Imagen</th>
             <th>Estado</th>
             <th>Categoria</th>
@@ -31,6 +32,7 @@
                 <td>{{ $lugar->nombre }} </td>
                 <td>{{ $lugar->descripcion }} </td>
                 <td>{{ $lugar->ubicacion }} </td>
+                <td>{{ $lugar->gmap}} </td>
                 <td>
 
                     @if ($lugar->imagen)
@@ -49,6 +51,7 @@
                         <a href="" class="editar-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                             data-id="{{ $lugar->id }}" data-nombre="{{ $lugar->nombre }}"
                             data-descripcion="{{ $lugar->descripcion }}" data-ubicacion="{{ $lugar->ubicacion }}"
+                            data-gmap="{{ $lugar->gmap }}"
                             data-idestado="{{ $lugar->idEstado }}" data-idcategoria="{{ $lugar->idCategoria }}">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
@@ -79,6 +82,7 @@
                     var nombre = $(this).data('nombre');
                     var descripcion = $(this).data('descripcion');
                     var ubicacion = $(this).data('ubicacion');
+                    var gmap = $(this).data('gmap');
                     var idCategoria = $(this).data('idcategoria');
                     var idEstado = $(this).data('idestado');
 
@@ -89,6 +93,7 @@
                     $('#formulario-editar #idCategoria').val(idCategoria);
                     $('#formulario-editar #descripcion').val(descripcion);
                     $('#formulario-editar #ubicacion').val(ubicacion);
+                    $('#formulario-editar #gmap').val(gmap);
                     $('#formulario-editar').attr('action', editarLugarRoute.replace(':id', id));
 
                     // Seleccionar el estado correspondiente en el select
@@ -108,6 +113,8 @@
                     $('#formulario-editar #id').val('');
                     $('#formulario-editar #nombre').val('');
                     $('#formulario-editar #descripcion').val('');
+                    $('#formulario-editar #ubicacion').val('');
+                    $('#formulario-editar #gmap').val('');
                     $('#formulario-editar #idEstado').val('0');
                     $('#formulario-editar').attr('action', '{{ route('crearLugar') }}');
                     // Mostrar el modal de edición
@@ -123,12 +130,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
             integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        @if (Session::has('message'))
+            @if (Session::has('message'))
             <script>
                 toastr.options = {
                     "timeOut": 5000,
                 };
                 toastr.success("{{ Session::get('message') }}");
+            </script>
+        @elseif(Session::has('error'))
+            <script>
+                toastr.options = {
+                    "timeOut": 5000,
+                };
+                toastr.error("{{ Session::get('error') }}");
             </script>
         @endif
     @endsection
@@ -155,7 +169,10 @@
             <input class="input" type="text" id="ubicacion" name="ubicacion" placeholder="" required>
             <span>Ubicación</span>
         </label>
-
+        <label>
+            <input class="input" type="text" id="gmap" name="gmap" placeholder="" required>
+            <span>Google Maps</span>
+        </label>
         <label>
             <select id="idEstado" name="idEstado" class="form-select form-select-sm" required>
                 <option value="0">Selecciona un Estado:</option>

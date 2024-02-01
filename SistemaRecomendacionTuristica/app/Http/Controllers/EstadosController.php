@@ -49,7 +49,12 @@ class EstadosController extends Controller
      */
     public function destroy(Estado $estado)
     {
-        $estado->delete();
-        return redirect()->route('estados')->with('message','Estado se elimino correctamente..');
+
+        try {
+            $estado->delete();
+            return redirect()->route('estados')->with('message','Estado se elimino correctamente..');
+        } catch (\Exception $e) {
+            return redirect()->route('estados')->with('error', 'Error al eliminar, existen registros asociados' );
+        }
     }
 }

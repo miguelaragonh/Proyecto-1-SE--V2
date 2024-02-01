@@ -15,7 +15,7 @@ class RolesController extends Controller
     {
         $estados = Estado::all();
         $roles = Rol::with('estado')->get();
-        return view('admin.roles', compact('estados','roles'));
+        return view('admin.roles', compact('estados', 'roles'));
     }
 
 
@@ -50,7 +50,11 @@ class RolesController extends Controller
      */
     public function destroy(Rol $rol)
     {
-        $rol->delete();
-        return redirect()->route('rol')->with('message', 'Rol se elimino correctamente..');
+        try {
+            $rol->delete();
+            return redirect()->route('rol')->with('message', 'Rol se elimino correctamente..');
+        } catch (\Exception $e) {
+            return redirect()->route('rol')->with('error', 'Error al eliminar, existen registros asociados');
+        }
     }
 }

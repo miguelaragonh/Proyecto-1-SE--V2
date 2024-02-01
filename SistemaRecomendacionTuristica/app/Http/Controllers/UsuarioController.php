@@ -134,7 +134,12 @@ class UsuarioController extends Controller
      */
     public function destroy(User $usuario)
     {
-        $usuario->delete();
-        return redirect()->back();
+
+        try {
+            $usuario->delete();
+            return redirect()->back()->with('message','Usuario se elimino correctamente..');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error al eliminar, existen registros asociados' );
+        }
     }
 }

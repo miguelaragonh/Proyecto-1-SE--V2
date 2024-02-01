@@ -46,7 +46,7 @@
                             <p class="error-message" id="error-email"></p>
                             <div class="input-group">
                                 <i class="fa-solid fa-lock"></i>
-                                <input type="text" placeholder="Contraseña" name="password" id="password"
+                                <input type="password" placeholder="Contraseña" name="password" id="password"
                                     oninput="validarPassword()" required>
                             </div>
                             <!-- Muestra el mensaje de error para la contraseña -->
@@ -99,7 +99,7 @@
 
                 function mostrarError(elemento, mensaje) {
                     const errorElemento = document.getElementById(`error-${elemento.id}`);
-                    
+
                     if (mensaje) {
                         errorElemento.innerText = mensaje;
                         elemento.classList.add("error");
@@ -230,12 +230,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    @if (Session::has('message'))
+        @if (Session::has('message'))
         <script>
             toastr.options = {
                 "timeOut": 5000,
             };
             toastr.success("{{ Session::get('message') }}");
+        </script>
+    @elseif(Session::has('error'))
+        <script>
+            toastr.options = {
+                "timeOut": 5000,
+            };
+            toastr.error("{{ Session::get('error') }}");
         </script>
     @endif
     <script>

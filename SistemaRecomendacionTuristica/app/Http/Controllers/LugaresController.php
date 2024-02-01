@@ -35,25 +35,23 @@ class LugaresController extends Controller
         $nombre = $request->input('text');
         $preferencia = $usuario->preferencia;
         $historial = $this->conteoHistorial($usuario);
-        $categoriaMasBuscada=array_search(max($historial), $historial);
+        $categoriaMasBuscada = array_search(max($historial), $historial);
         if ($preferencia != null) {
             $lugares = Lugar::with('estado', 'categoria')
-            ->orderByDesc(DB::raw("idCategoria = '{$preferencia}'"))->get();
-        }
-        elseif ($categoriaMasBuscada==3) {
+                ->orderByDesc(DB::raw("idCategoria = '{$preferencia}'"))->get();
+        } elseif ($categoriaMasBuscada == 3) {
             $lugares = Lugar::with('estado', 'categoria')
-            ->orderByDesc(DB::raw("idCategoria = '{$categoriaMasBuscada}'"))->get();
-        }elseif ($categoriaMasBuscada==4) {
+                ->orderByDesc(DB::raw("idCategoria = '{$categoriaMasBuscada}'"))->get();
+        } elseif ($categoriaMasBuscada == 4) {
             $lugares = Lugar::with('estado', 'categoria')
-            ->orderByDesc(DB::raw("idCategoria = '{$categoriaMasBuscada}'"))->get();
-        }elseif ($categoriaMasBuscada==5) {
+                ->orderByDesc(DB::raw("idCategoria = '{$categoriaMasBuscada}'"))->get();
+        } elseif ($categoriaMasBuscada == 5) {
             $lugares = Lugar::with('estado', 'categoria')
-            ->orderByDesc(DB::raw("idCategoria = '{$categoriaMasBuscada}'"))->get();
-        }
-        else {
+                ->orderByDesc(DB::raw("idCategoria = '{$categoriaMasBuscada}'"))->get();
+        } else {
             $lugares = Lugar::with('estado', 'categoria')->get();
         }
-        return view('welcome', compact('lugares','categoriaMasBuscada','preferencia'));
+        return view('welcome', compact('lugares', 'categoriaMasBuscada', 'preferencia'));
     }
 
 
@@ -61,12 +59,12 @@ class LugaresController extends Controller
     {
         $categorias = Categoria::all();
         $historial = array();
-        $historial[0]=0;
+        $historial[0] = 0;
         foreach ($categorias as $categoria) {
             $historial[$categoria->id] =
                 Historial::where('idUsuario', $usuario->id)
-                    ->where('idCategoria', $categoria->id)
-                    ->count();
+                ->where('idCategoria', $categoria->id)
+                ->count();
         }
         return $historial;
     }
@@ -78,16 +76,16 @@ class LugaresController extends Controller
         $usuario = auth()->user();
         $preferencia = $usuario->preferencia;
         $historial = $this->conteoHistorial($usuario);
-        $categoriaMasBuscada=array_search(max($historial), $historial);
+        $categoriaMasBuscada = array_search(max($historial), $historial);
         if ($nombre != null) {
             $query = Lugar::with('estado', 'categoria');
             $query->where('nombre', 'like', '%' . $nombre . '%');
             $lugares = $query->get();
             $this->nuevoHistorial($query);
-            return view('welcome', compact('lugares','categoriaMasBuscada','preferencia'));
+            return view('welcome', compact('lugares', 'categoriaMasBuscada', 'preferencia'));
         } else {
             $lugares = Lugar::with('estado', 'categoria')->get();
-            return view('welcome', compact('lugares','categoriaMasBuscada','preferencia'));
+            return view('welcome', compact('lugares', 'categoriaMasBuscada', 'preferencia'));
         }
     }
 
@@ -118,8 +116,10 @@ class LugaresController extends Controller
         $lugar->nombre = $request->nombre;
         $lugar->descripcion = $request->descripcion;
         $lugar->ubicacion = $request->ubicacion;
+        $lugar->gmap = $request->gmap;
         $lugar->idEstado = $request->idEstado;
         $lugar->idCategoria = $request->idCategoria;
+        $lugar->gmap = ($request->gmap) ? $request->gmap : '#';
         if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
             $lugar->imagen = $this->guardarImg($request);
         } else {
@@ -151,6 +151,7 @@ class LugaresController extends Controller
         $lugar->nombre = $request->nombre;
         $lugar->descripcion = $request->descripcion;
         $lugar->ubicacion = $request->ubicacion;
+        $lugar->gmap = ($request->gmap) ? $request->gmap : '#';
         $lugar->idEstado = $request->idEstado;
         $lugar->idCategoria = $request->idCategoria;
 
@@ -170,7 +171,13 @@ class LugaresController extends Controller
      */
     public function destroy(Lugar $lugar)
     {
-        $lugar->delete();
-        return redirect()->route('lugar')->with('message', 'Lugar se elimino correctamente..');
+
+        try {
+            $lugar->delete();
+            return redirect()->route('lugar')->with('message', 'Lugar se elimino correctamente..');
+        } catch (\Exception $e) {
+            return redirect()->route('lugar')->with('error', 'Error al eliminar, existen registros asociados' );
+        }
+
     }
 }
