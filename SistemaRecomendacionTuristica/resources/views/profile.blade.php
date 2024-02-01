@@ -13,10 +13,7 @@
                         <div class="account-settings">
                             <div class="user-profile">
                                 <div class="avatar-upload">
-                                    <div class="avatar-edit">
-                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                                        <label for="imageUpload"></label>
-                                    </div>
+
                                     <div class="avatar-preview">
                                         @if (auth()->user()->img)
                                             <div id="imagePreview"
@@ -47,6 +44,7 @@
 
                 <form action="{{ route('editarUsuario2', auth()->user()->id) }}" method="POST">
                     @csrf
+
                     <input type="hidden" id="idEstado" name="idEstado" value="{{ auth()->user()->idEstado }}">
                     <input type="hidden" id="idRol" name="idRol" value="{{ auth()->user()->idRol }}">
                     <div class="card-body">
@@ -98,9 +96,14 @@
                                             @endforeach
                                         @endif
                                     </select>
+
+                                    <label>
+                                        <input class="input" type="file" id="img" name="img" placeholder="" accept="image/*">
+                                    </label>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-right">
@@ -241,7 +244,7 @@
             var contrasenaNueva = document.getElementById("contrasenaNueva")
             var contrasenaNueva2 = document.getElementById("contrasenaNueva2")
             if (contrasenaActual.readOnly) {
-                contrasenaActual.readOnly = true
+                contrasenaActual.readOnly = false
                 contrasenaNueva.readOnly = false
                 contrasenaNueva2.readOnly = false
                 botonOcultar.hidden = false

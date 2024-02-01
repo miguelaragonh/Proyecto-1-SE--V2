@@ -87,6 +87,7 @@ class UsuarioController extends Controller
             $usuario->preferencia = ($request->preferencia != 0) ? $request->preferencia : null;
 
             if ($request->hasFile('img') && $request->file('img')->isValid()) {
+                var_dump('fdfdse');
                 $usuario->img = $this->guardarImg($request);
             } else {
                 $usuario->img = $usuario->img;
