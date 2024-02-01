@@ -1,6 +1,6 @@
 @extends('layouts.tables')
 @section('titulo', 'Gestionar Roles')
-@section('title', 'STRCR-Roles')
+@section('title', 'DestinoCR Admin')
 
 @section('btnNuevo')
     <button class="btn btn-primary" id="btnNuevo" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id=""

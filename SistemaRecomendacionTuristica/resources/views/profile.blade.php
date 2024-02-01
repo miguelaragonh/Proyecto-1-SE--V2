@@ -1,5 +1,5 @@
 @extends('layouts.sidebar')
-@section('title', 'SRTCR-Perfil')
+@section('title', 'DestinoCR Perfil')
 
 @section('content')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">

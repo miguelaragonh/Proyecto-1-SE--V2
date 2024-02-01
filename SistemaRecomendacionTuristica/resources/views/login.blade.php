@@ -2,7 +2,7 @@
 
 <head>
     <link rel="shortcut icon" href="images/srtcr.png" type="image/x-icon">
-    <title>Iniciar Sesion en SRTCR</title>
+    <title>Inicia Sesion en DestinoCR</title>
     <link rel="stylesheet" href="{{ asset('assets/LogIn.css') }}">
 </head>
 
@@ -200,7 +200,7 @@
             <div class="col align-items-center flex-col">
                 <div class="text sign-in">
                     <h2>
-                        Bienvenidos a TuristiandoCR
+                        Bienvenidos a DestinoCR
                     </h2>
                 </div>
                 <div class="img sign-in">
@@ -213,7 +213,7 @@
                 </div>
                 <div class="text sign-up">
                     <h2>
-                        Registrate en TuristiandoCR
+                        Registrate en DestinoCR
                     </h2>
 
                 </div>
