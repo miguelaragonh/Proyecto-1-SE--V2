@@ -13,7 +13,12 @@
                         <div class="account-settings">
                             <div class="user-profile">
                                 <div class="avatar-upload">
-
+                                    <form action="{{ route('editarUsuario2', auth()->user()->id) }}" method="POST" enctype="multipart/form-data" >
+                                        @csrf
+                                    <div class="avatar-edit">
+                                        <input type='file' id="imageUpload" name='img' accept=".png, .jpg, .jpeg" disabled/>
+                                        <label for="imageUpload"></label>
+                                    </div>
                                     <div class="avatar-preview">
                                         @if (auth()->user()->img)
                                             <div id="imagePreview"
@@ -42,8 +47,6 @@
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <div class="card h-100">
 
-                <form action="{{ route('editarUsuario2', auth()->user()->id) }}" method="POST">
-                    @csrf
 
                     <input type="hidden" id="idEstado" name="idEstado" value="{{ auth()->user()->idEstado }}">
                     <input type="hidden" id="idRol" name="idRol" value="{{ auth()->user()->idRol }}">
@@ -96,14 +99,9 @@
                                             @endforeach
                                         @endif
                                     </select>
-
-                                    <label>
-                                        <input class="input" type="file" id="img" name="img" placeholder="" accept="image/*">
-                                    </label>
                                 </div>
                             </div>
                         </div>
-
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-right">
@@ -223,6 +221,7 @@
         function updateInfo() {
             var botonEditar = document.getElementById("editar");
             var botonOcultar = document.getElementById("submit");
+            var botonImg = document.getElementById("imageUpload");
             var input1 = document.getElementById("user-name")
             var input2 = document.getElementById("user-lastname")
             var input3 = document.getElementById("user-email")
@@ -232,6 +231,7 @@
                 input2.readOnly = false
                 input3.readOnly = false
                 select.removeAttribute("disabled");
+                botonImg.removeAttribute("disabled");
                 botonOcultar.hidden = false
                 botonEditar.hidden = true
             }
@@ -244,7 +244,7 @@
             var contrasenaNueva = document.getElementById("contrasenaNueva")
             var contrasenaNueva2 = document.getElementById("contrasenaNueva2")
             if (contrasenaActual.readOnly) {
-                contrasenaActual.readOnly = false
+                contrasenaActual.readOnly = true
                 contrasenaNueva.readOnly = false
                 contrasenaNueva2.readOnly = false
                 botonOcultar.hidden = false
